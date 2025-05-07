@@ -1,332 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Provide Feedback</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Feedback - STEMediaHub</title>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../css/stylesheet.css" />
+    <link rel="stylesheet" href="../css/control-panel.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Quicksand:wght@300..700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- ✅ Use correct Firebase imports -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      body {
-        font-family: "Inter", sans-serif;
+      .feedback-form {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-      .feedback-textarea {
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #374151;
+      }
+      .form-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 1rem;
+      }
+      .form-textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 1rem;
         min-height: 150px;
         resize: vertical;
-        transition: all 0.3s ease;
       }
-      .feedback-textarea:focus {
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+      .submit-btn {
+        background-color: #2563eb;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
       }
-      .submit-button {
-        transition: all 0.3s ease;
-      }
-      .submit-button:hover {
-        transform: translateY(-1px);
+      .submit-btn:hover {
+        background-color: #1d4ed8;
       }
       .success-message {
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
-      }
-      .success-message.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Control Panel Styles */
-      #sidebarMenu {
-        background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        border-right: 2px solid rgba(255, 255, 255, 0.1);
-      }
-
-      #sidebarMenu .p-6 {
-        background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
-        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-      }
-
-      #sidebarMenu nav a {
-        color: #e2e8f0;
-        padding: 12px 20px;
-        margin: 8px 0;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      #sidebarMenu nav a::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 4px;
-        background: #60a5fa;
-        transform: scaleY(0);
-        transition: transform 0.2s ease;
-      }
-
-      #sidebarMenu nav a:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateX(5px);
-        color: #ffffff;
-      }
-
-      #sidebarMenu nav a:hover::before {
-        transform: scaleY(1);
-      }
-
-      #sidebarMenu nav a::after {
-        content: "";
-        position: absolute;
-        right: 20px;
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: all 0.3s ease;
-        width: 16px;
-        height: 16px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3Cpolyline points='12 5 19 12 12 19'%3E%3C/polyline%3E%3C/svg%3E");
-        background-size: contain;
-        background-repeat: no-repeat;
-      }
-
-      #sidebarMenu nav a:hover::after {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      #closeButton {
-        background: rgba(255, 255, 255, 0.1);
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-      }
-
-      #closeButton:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: rotate(90deg);
-      }
-
-      #menuButton {
-        transition: all 0.3s ease;
-      }
-
-      #menuButton:hover {
-        transform: scale(1.05);
-        background: #1d4ed8;
-      }
-
-      #menuIcon {
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      #menuIcon.rotate-90 {
-        transform: rotate(90deg);
-      }
-
-      @keyframes slideIn {
-        from {
-          transform: translateX(-100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      #sidebarMenu:not(.-translate-x-full) {
-        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      /* Scroll Animation Styles */
-      .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .animate-on-scroll.visible {
-        opacity: 1;
-        transform: translateY(0);
+        display: none;
+        padding: 1rem;
+        background-color: #dcfce7;
+        color: #166534;
+        border-radius: 6px;
+        margin-top: 1rem;
       }
     </style>
   </head>
-  <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
-    <!-- Fixed Header -->
+  <body>
     <header
-      class="fixed top-0 left-0 w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex justify-between items-center shadow-lg z-50"
+      class="flex justify-between items-center bg-blue-600 text-white p-4"
     >
-      <h1 class="text-2xl font-bold tracking-tight">STEMediaHub</h1>
-      <!-- Menu Button -->
-      <button
-        id="menuButton"
-        class="bg-blue-500/20 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-500/30 transition-all duration-300"
+      <h1 class="text-xl font-bold">STEMediaHub</h1>
+      <a href="../index.html" class="bg-blue-500 px-4 py-2 rounded"
+        >Back to Home</a
       >
-        <span id="menuIcon" class="transition-transform duration-300">☰</span>
-      </button>
     </header>
 
-    <!-- Sidebar Menu -->
-    <div
-      id="sidebarMenu"
-      class="fixed top-0 left-0 h-full w-72 transform -translate-x-full transition-transform duration-300 z-50"
-    >
-      <div class="p-6 text-white flex justify-between items-center relative">
-        <h2 class="text-xl font-bold tracking-tight">Control Panel</h2>
-        <button id="closeButton" class="text-2xl">&times;</button>
-      </div>
-      <nav class="p-6">
-        <a href="../index.html" class="block">Homepage</a>
-        <hr class="my-4 border-gray-700" />
-      </nav>
-    </div>
-
-    <!-- Centered Content -->
-    <div class="flex items-center justify-center min-h-screen pt-20 px-4">
-      <div
-        class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md transform transition-all duration-300 hover:shadow-2xl animate-on-scroll"
-      >
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">
-          Share Your Feedback
-        </h2>
-        <p class="text-gray-600 mb-4">
-          We value your thoughts and suggestions. Help us improve STEMediaHub!
-        </p>
-        <textarea
-          id="feedback"
-          class="w-full p-4 border border-gray-200 rounded-xl feedback-textarea focus:outline-none focus:border-blue-500"
-          placeholder="What's on your mind? Share your thoughts, suggestions, or report any issues..."
-        ></textarea>
-        <button
-          onclick="submitFeedback()"
-          class="mt-6 w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-xl submit-button font-medium hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    <main class="container mx-auto px-4 py-8">
+      <div class="feedback-form">
+        <h2 class="text-2xl font-bold mb-6 text-center">Provide Feedback</h2>
+        <form
+          action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+          method="POST"
+          id="feedbackForm"
         >
-          Submit Feedback
-        </button>
-        <p id="message" class="text-sm text-green-600 mt-4 success-message"></p>
+          <div class="form-group">
+            <label class="form-label" for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject:</label>
+            <select id="subject" name="subject" class="form-input" required>
+              <option value="">Select a subject</option>
+              <option value="Earth Science">Earth Science</option>
+              <option value="Oral Communication">Oral Communication</option>
+              <option value="Pre Calculus">Pre Calculus</option>
+              <option value="Physical Education">Physical Education</option>
+              <option value="General Mathematics">General Mathematics</option>
+              <option value="Personal Development">Personal Development</option>
+              <option value="21st Century Literature">
+                21st Century Literature
+              </option>
+              <option value="Komunikasyon at Pananaliksik">
+                Komunikasyon at Pananaliksik
+              </option>
+              <option value="Empowerment Technology">
+                Empowerment Technology
+              </option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="feedback">Your Feedback:</label>
+            <textarea
+              id="feedback"
+              name="feedback"
+              class="form-textarea"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn w-full">
+            Submit Feedback
+          </button>
+        </form>
+        <div id="successMessage" class="success-message">
+          Thank you for your feedback! We'll review it shortly.
+        </div>
       </div>
-    </div>
+    </main>
 
     <script>
-      // ✅ Correct Firebase Configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyDvtA1hpxxFCTO8ehtJWT-pl7bTphNt3oI",
-        authDomain: "researchwebfeedback.firebaseapp.com",
-        projectId: "researchwebfeedback",
-        storageBucket: "researchwebfeedback.appspot.com",
-        messagingSenderId: "825424410349",
-        appId: "1:825424410349:web:09da0060ac60987d5dfee4",
-      };
+      document
+        .getElementById("feedbackForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
 
-      // ✅ Initialize Firebase AFTER the scripts have loaded
-      firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
-      const db = firebase.firestore();
+          // Get form data
+          const formData = new FormData(this);
 
-      // ✅ Automatically Sign in Users Anonymously
-      auth.signInAnonymously().catch((error) => {
-        console.error("Anonymous sign-in failed:", error);
-      });
-
-      function submitFeedback() {
-        const feedbackText = document.getElementById("feedback").value.trim();
-        if (feedbackText === "") {
-          alert("Please enter your feedback.");
-          return;
-        }
-
-        const user = auth.currentUser;
-        if (!user) {
-          alert("User not signed in. Please try again.");
-          return;
-        }
-
-        // ✅ Store feedback in Firestore
-        db.collection("feedback")
-          .add({
-            userId: user.uid,
-            feedback: feedbackText,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          // Send form data to Formspree
+          fetch(this.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
           })
-          .then(() => {
-            const messageElement = document.getElementById("message");
-            messageElement.innerText = "Thank you for your feedback!";
-            messageElement.classList.add("show");
-            document.getElementById("feedback").value = "";
-
-            // Reset success message after 3 seconds
-            setTimeout(() => {
-              messageElement.classList.remove("show");
-            }, 3000);
-          })
-          .catch((error) => {
-            console.error("Error submitting feedback:", error);
-            alert("Error submitting feedback. Please try again.");
-          });
-      }
-
-      // Scroll Animation
-      function handleScrollAnimation() {
-        const elements = document.querySelectorAll(".animate-on-scroll");
-        elements.forEach((element) => {
-          const elementTop = element.getBoundingClientRect().top;
-          const elementVisible = 150;
-
-          if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add("visible");
-          }
+            .then((response) => {
+              if (response.ok) {
+                // Show success message
+                document.getElementById("successMessage").style.display =
+                  "block";
+                // Reset form
+                this.reset();
+              } else {
+                throw new Error("Network response was not ok");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert(
+                "There was a problem submitting your feedback. Please try again."
+              );
+            });
         });
-      }
-
-      // Initial check for elements in view
-      window.addEventListener("load", handleScrollAnimation);
-      // Check on scroll
-      window.addEventListener("scroll", handleScrollAnimation);
-    </script>
-    <script>
-      const menuButton = document.getElementById("menuButton");
-      const menuIcon = document.getElementById("menuIcon");
-      const sidebarMenu = document.getElementById("sidebarMenu");
-      const closeButton = document.getElementById("closeButton");
-
-      menuButton.addEventListener("click", function () {
-        sidebarMenu.classList.toggle("-translate-x-full");
-        menuIcon.classList.toggle("rotate-90");
-      });
-
-      closeButton.addEventListener("click", function () {
-        sidebarMenu.classList.add("-translate-x-full");
-        menuIcon.classList.remove("rotate-90");
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          !sidebarMenu.contains(event.target) &&
-          !menuButton.contains(event.target)
-        ) {
-          sidebarMenu.classList.add("-translate-x-full");
-          menuIcon.classList.remove("rotate-90");
-        }
-      });
     </script>
   </body>
 </html>
