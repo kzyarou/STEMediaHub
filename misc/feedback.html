@@ -17,130 +17,271 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      body {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        min-height: 100vh;
+      }
       .feedback-form {
-        max-width: 600px;
+        max-width: 700px;
         margin: 2rem auto;
-        padding: 2rem;
+        padding: 2.5rem;
         background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .feedback-form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
       .form-group {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.8rem;
+        position: relative;
       }
       .form-label {
         display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.7rem;
         font-weight: 600;
-        color: #374151;
+        color: #1e40af;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
       }
       .form-input {
         width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
+        padding: 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
         font-size: 1rem;
+        transition: all 0.3s ease;
+        background: white;
+        color: #1e293b;
+      }
+      .form-input:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        outline: none;
       }
       .form-textarea {
         width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
+        padding: 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
         font-size: 1rem;
-        min-height: 150px;
+        min-height: 180px;
         resize: vertical;
+        transition: all 0.3s ease;
+        background: white;
+        color: #1e293b;
+      }
+      .form-textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        outline: none;
+      }
+      .form-input::placeholder,
+      .form-textarea::placeholder {
+        color: #94a3b8;
       }
       .submit-btn {
-        background-color: #2563eb;
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
         color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 6px;
+        padding: 1rem 2rem;
+        border-radius: 12px;
         font-weight: 600;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: all 0.3s ease;
+        border: none;
+        font-size: 1.1rem;
+        position: relative;
+        overflow: hidden;
       }
       .submit-btn:hover {
-        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+      }
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+      .submit-btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+      .submit-btn:hover::after {
+        left: 100%;
       }
       .success-message {
         display: none;
-        padding: 1rem;
-        background-color: #dcfce7;
+        padding: 1.2rem;
+        background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
         color: #166534;
-        border-radius: 6px;
-        margin-top: 1rem;
+        border-radius: 12px;
+        margin-top: 1.5rem;
+        text-align: center;
+        font-weight: 500;
+        animation: slideIn 0.5s ease;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .header {
+        background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .back-btn {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+      .back-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(-3px);
+      }
+      .form-title {
+        background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+      .form-subtitle {
+        color: #64748b;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+      .select-wrapper {
+        position: relative;
+      }
+      .select-wrapper::after {
+        content: "▼";
+        font-size: 0.8rem;
+        color: #64748b;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+      select.form-input {
+        appearance: none;
+        padding-right: 2.5rem;
+      }
+      .form-group.focused .form-label {
+        color: #2563eb;
+        transform: translateY(-2px);
       }
     </style>
   </head>
   <body>
-    <header
-      class="flex justify-between items-center bg-blue-600 text-white p-4"
-    >
-      <h1 class="text-xl font-bold">STEMediaHub</h1>
-      <a href="../index.html" class="bg-blue-500 px-4 py-2 rounded"
-        >Back to Home</a
-      >
+    <header class="header flex justify-between items-center text-white">
+      <h1 class="text-2xl font-bold">STEMediaHub</h1>
+      <a href="../index.html" class="back-btn flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Back to Home
+      </a>
     </header>
 
     <main class="container mx-auto px-4 py-8">
       <div class="feedback-form">
-        <h2 class="text-2xl font-bold mb-6 text-center">Provide Feedback</h2>
+        <h2 class="form-title text-center">Share Your Feedback</h2>
+        <p class="form-subtitle">
+          Help us improve STEMediaHub by sharing your thoughts and suggestions
+        </p>
+
         <form
           action="https://formspree.io/f/myzwjyzp"
           method="POST"
           id="feedbackForm"
         >
           <div class="form-group">
-            <label class="form-label" for="name">Name:</label>
+            <label class="form-label" for="name">Your Name</label>
             <input
               type="text"
               id="name"
               name="name"
               class="form-input"
+              placeholder="Enter your name"
               required
             />
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="email">Email:</label>
+            <label class="form-label" for="email">Email Address</label>
             <input
               type="email"
               id="email"
               name="email"
               class="form-input"
+              placeholder="Enter your email"
               required
             />
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="subject">Subject:</label>
-            <select id="subject" name="subject" class="form-input" required>
-              <option value="">Select a subject</option>
-              <option value="Earth Science">Earth Science</option>
-              <option value="Oral Communication">Oral Communication</option>
-              <option value="Pre Calculus">Pre Calculus</option>
-              <option value="Physical Education">Physical Education</option>
-              <option value="General Mathematics">General Mathematics</option>
-              <option value="Personal Development">Personal Development</option>
-              <option value="21st Century Literature">
-                21st Century Literature
-              </option>
-              <option value="Komunikasyon at Pananaliksik">
-                Komunikasyon at Pananaliksik
-              </option>
-              <option value="Empowerment Technology">
-                Empowerment Technology
-              </option>
-              <option value="Other">Other</option>
-            </select>
+            <label class="form-label" for="subject">Subject Area</label>
+            <div class="select-wrapper">
+              <select id="subject" name="subject" class="form-input" required>
+                <option value="">Select a subject</option>
+                <option value="Earth Science">Earth Science</option>
+                <option value="Oral Communication">Oral Communication</option>
+                <option value="Pre Calculus">Pre Calculus</option>
+                <option value="Physical Education">Physical Education</option>
+                <option value="General Mathematics">General Mathematics</option>
+                <option value="Personal Development">
+                  Personal Development
+                </option>
+                <option value="21st Century Literature">
+                  21st Century Literature
+                </option>
+                <option value="Komunikasyon at Pananaliksik">
+                  Komunikasyon at Pananaliksik
+                </option>
+                <option value="Empowerment Technology">
+                  Empowerment Technology
+                </option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="feedback">Your Feedback:</label>
+            <label class="form-label" for="feedback">Your Feedback</label>
             <textarea
               id="feedback"
               name="feedback"
               class="form-textarea"
+              placeholder="Share your thoughts, suggestions, or report any issues..."
               required
             ></textarea>
           </div>
@@ -150,21 +291,49 @@
           </button>
         </form>
         <div id="successMessage" class="success-message">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 inline-block mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
           Thank you for your feedback! We'll review it shortly.
         </div>
       </div>
     </main>
 
     <script>
+      // Add focus effects
+      const formInputs = document.querySelectorAll(
+        ".form-input, .form-textarea"
+      );
+      formInputs.forEach((input) => {
+        input.addEventListener("focus", () => {
+          input.parentElement.classList.add("focused");
+        });
+        input.addEventListener("blur", () => {
+          if (!input.value) {
+            input.parentElement.classList.remove("focused");
+          }
+        });
+      });
+
+      // Form submission
       document
         .getElementById("feedbackForm")
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
-          // Get form data
           const formData = new FormData(this);
 
-          // Send form data to Formspree
           fetch(this.action, {
             method: "POST",
             body: formData,
@@ -174,11 +343,12 @@
           })
             .then((response) => {
               if (response.ok) {
-                // Show success message
                 document.getElementById("successMessage").style.display =
                   "block";
-                // Reset form
                 this.reset();
+                formInputs.forEach((input) => {
+                  input.parentElement.classList.remove("focused");
+                });
               } else {
                 throw new Error("Network response was not ok");
               }
