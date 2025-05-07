@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Personal Development - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../perdev2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">LESSON 5</h2>
+                <p class="text-lg mt-2">Personal</p>
+                <p class="text-lg">Development</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[70px] font-semibold">
+            Personal Development: Module 5
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/YI1PUfga82s" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">SHS Personal Development Module 5: Developmental Tasks and Challenges of Adolescence</h3>
+        <p class="text-muted-foreground">This course makes senior high school students (Grade 11 and 12 students) aware of the developmental stage that they are in, for them to better understand themselves and the significant people around them as they make important career decisions as adolescents. 
+
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 8,108 </span>
+            <span class="text-muted-foreground">LIKES: 81</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>SHS Personal Development Q1 Ep7: Becoming a Capable and Responsible Adolescent Prepared for Adult Life</strong><br><br>
+        
+                🎯 <strong>Overview:</strong><br>
+                This episode focuses on guiding adolescents toward maturity by developing essential life skills and responsibilities. It highlights self-awareness, decision-making, and goal-setting as key foundations for adulthood, while also addressing challenges faced during adolescence.<br><br>
+        
+                🔹 <strong>Key Learning Points:</strong><br>
+                - Understanding the responsibilities of adolescence in preparation for adulthood.<br>
+                - Developing self-awareness and decision-making skills.<br>
+                - Learning strategies to overcome common adolescent challenges.<br><br>
+        
+                💡 <strong>Key Takeaways:</strong><br>
+                - Maturity involves taking responsibility for one's actions and decisions.<br>
+                - Effective goal-setting and planning are crucial for a successful transition into adulthood.<br>
+                - Overcoming challenges with resilience fosters confidence and independence.<br><br>
+        
+                🌱 <strong>Why It Matters:</strong><br>
+                Preparing for adulthood ensures that adolescents develop the skills, mindset, and habits needed for personal and professional success.<br><br>
+        
+
+            </p>
+        </div>
+          
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/jFMWj4b6Pqc" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">(Personal Development) LESSON 5 - COPING WITH STRESS</h3>
+        <p class="text-muted-foreground">Stress is simply a reaction to a stimulus that disturbs our physical or mental equilibrium. In other words, it's an omnipresent part of life. A stressful event can trigger the “fight-or-flight” response, causing hormones such as adrenaline and cortisol to surge through the body.            
+            </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 5,069  </span>
+            <span class="text-muted-foreground">LIKES: 92</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>SHS Personal Development Q1 Ep8: Career Development</strong><br><br>
+        
+                🎯 <strong>Overview:</strong><br>
+                This episode guides senior high school students through the process of career planning and development. It emphasizes self-assessment, goal-setting, and skill-building to make informed career choices and adapt to the evolving job market.<br><br>
+        
+                🔹 <strong>Key Learning Points:</strong><br>
+                - Understanding personal interests, strengths, and values for career planning.<br>
+                - Setting realistic career goals and exploring various career options.<br>
+                - Developing essential skills for career success and adaptability in the job market.<br><br>
+        
+                💡 <strong>Key Takeaways:</strong><br>
+                - Self-awareness is crucial in choosing a fulfilling career path.<br>
+                - Setting clear and achievable career goals leads to long-term success.<br>
+                - Continuous learning and adaptability are essential in an ever-changing job landscape.<br><br>
+        
+                🌱 <strong>Why It Matters:</strong><br>
+                Career development helps individuals make informed decisions, build necessary skills, and navigate their professional journey with confidence.<br><br>
+        
+   
+            </p>
+        </div>        
+        
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- YouTube Video Section -->
+        <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+            <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+                <div class="relative">
+                    <!-- Embedded YouTube Video -->
+                    <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/CN_cKhfRVrw" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">Personal Development Grade11&12 Quarter1 Week5 EP5 Coping with Stress in Middle and Late Adolescence</h3>
+                    <p class="text-muted-foreground">Personal Development Grade11&12 Quarter1 Week5 EP5 Coping with Stress in Middle and Late Adolescence
+                    </p>
+                    <div class="flex justify-between mt-2">
+                        <span class="text-muted-foreground">VIEWS: 5,341 </span>
+                        <span class="text-muted-foreground">LIKES: 34</span>
+                    </div>
+            
+                    <!-- Dropdown Button -->
+                    <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+                        Read More
+                    </button>
+            
+                    <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+                    <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+                        <p class="max-h-96 overflow-auto">
+                            <strong>SHS Personal Development Q1 Ep6: Stress and Mental Health</strong><br><br>
+                    
+                            🎯 <strong>Overview:</strong><br>
+                            This episode explores the relationship between stress and mental health, particularly among senior high school students. It highlights common stressors such as academic pressures, social dynamics, and personal expectations while providing strategies for effective stress management.<br><br>
+                    
+                            🔹 <strong>Key Learning Points:</strong><br>
+                            - Identifying common stressors in adolescence.<br>
+                            - Understanding the impact of stress on mental health.<br>
+                            - Learning effective coping mechanisms and stress management techniques.<br><br>
+                    
+                            💡 <strong>Key Takeaways:</strong><br>
+                            - Recognizing early signs of stress is crucial for mental well-being.<br>
+                            - Healthy coping strategies help maintain a balanced and fulfilling life.<br>
+                            - Managing stress effectively enhances academic performance and personal development.<br><br>
+                    
+                            🌱 <strong>Why It Matters:</strong><br>
+                            Equipping students with stress management skills ensures their mental health remains strong, enabling them to navigate challenges with resilience and confidence.<br><br>
+                    
+                        </p>
+                    </div>                                                          
+                    
+                </div>
+            </div>
+            
+            <script>
+                function toggleDropdown(event) {
+                    const dropdown = event.target.nextElementSibling;
+            
+                    if (dropdown.classList.contains("max-h-0")) {
+                        dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+                    } else {
+                        dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+                    }
+                }
+            </script>
+    
+    
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2024 WEST</p>
+</footer>
+        
+</body>
+</html>

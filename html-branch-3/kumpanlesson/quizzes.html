@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kumunikasyon at Pananaliksik Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-3xl p-6 bg-white rounded-2xl shadow-lg">
+        <header class="text-center">
+            <h1 class="text-3xl font-bold text-gray-800">📖 School Quiz<br> Kumunikasyon at Pananaliksik sa Wikang Pilipino</h1>
+            <p class="text-gray-600 mt-2">Select a quiz for the respective quarter.</p>
+        </header>
+
+        <!-- Tabs for Quarters -->
+        <div class="flex justify-center gap-4 mt-6">
+            <button onclick="showQuiz('quiz1')" 
+                class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition">
+                Quarter 1 Quiz
+            </button>
+            <button onclick="showQuiz('quiz2')" 
+                class="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition">
+                Quarter 2 Quiz
+            </button>
+        </div>
+
+        <!-- Quiz Containers -->
+        <div id="quiz1" class="mt-6">
+            <h2 class="text-xl font-semibold text-blue-600 text-center">📌 Quarter 1 Quiz</h2>
+            <iframe class="w-full h-[600px] rounded-lg shadow-md mt-3" 
+                src="https://docs.google.com/forms/d/1eCf1osr3Rg2DyQIUGLGYURzapATynp3ZwkLsoJBpK6o/edit?usp=drivesdk" 
+                frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+
+        <div id="quiz2" class="mt-6 hidden">
+            <h2 class="text-xl font-semibold text-green-600 text-center">📌 Quarter 2 Quiz</h2>
+            <iframe class="w-full h-[600px] rounded-lg shadow-md mt-3" 
+                src="https://docs.google.com/forms/d/1p17Pp80WqhDk1-td7C3hKF_UAUjLG-eJDIghAj-75dQ/edit?usp=drivesdk" 
+                frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+
+        <footer class="mt-6 text-center text-gray-500">
+            <p>© 2025 Dolores National High School | Good luck!</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Switching Quizzes -->
+    <script>
+        function showQuiz(quizId) {
+            document.getElementById('quiz1').classList.add('hidden');
+            document.getElementById('quiz2').classList.add('hidden');
+            document.getElementById(quizId).classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>
+

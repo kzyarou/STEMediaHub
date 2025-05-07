@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kumunikasyon at Pananaliksik sa Wikang Pilipino - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+               <a href="../../../kumpan2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">ARALIN 13</h2>
+                <p class="text-lg mt-2">Komunikasyon at Pananaliksik</p>
+                <p class="text-lg">sa Wikang Pilipino</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[30px] font-semibold mx-[10px]">
+            Kakayahang Pragmatiko at Pagsulat ng Kritikal na Sanaysay
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+        
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/bX5xhNtNZYg" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 12: Kakayahang Pragmatiko at Pagsulat ng Kritikal na Sanaysay</h3>
+        <p class="text-muted-foreground">Asignatura: Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino - Ikaanim na Linggo - Ikalawang Kwarter
+            Disclaimer: Ang bidyo o awiting aking ginamit ay hindi ko pag-aari. Ito lamang ay aking hiniram upang lalong mas mapaganda at maging detalyado ang aming talakayan. Maraming salamat po sa mga may-ari ng mga bidyo o awitin</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 2,636 </span>
+            <span class="text-muted-foreground">LIKES: 104</span>
+        </div>
+
+
+
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                🎥 <strong>Deskripsyon:</strong>  
+                Ang video na ito ay nagpapaliwanag tungkol sa isang mahalagang konsepto sa wika at komunikasyon. Naglalaman ito ng detalyadong talakayan na makakatulong sa mas malalim na pag-unawa sa paksa.  
+                <br><br>
+        
+                <strong>🔑 Mahahalagang Punto:</strong><br>
+                ✅ <strong>Punto 1:</strong> Pagpapaliwanag sa kahulugan at saklaw ng paksa.  
+                ✅ <strong>Punto 2:</strong> Mga halimbawa at aplikasyon sa totoong buhay.  
+                ✅ <strong>Punto 3:</strong> Pagtalakay sa epekto at kahalagahan nito sa lipunan.  
+                ✅ <strong>Punto 4:</strong> Konklusyon at mga aral na maaaring mapulot mula sa talakayan.  
+                <br><br>
+        
+                📌 <strong>Mga Dapat Tandaan:</strong>  
+                - Mahalaga ang tamang paggamit ng wika sa iba’t ibang larangan.  
+                - Ang epektibong komunikasyon ay may malaking papel sa pagpapalaganap ng impormasyon.  
+                <br><br>
+        
+                🔗 <strong>Panoorin ang video dito:</strong>  
+                <a href="https://youtu.be/bX5xhNtNZYg" target="_blank">Pindutin para mapanood</a>  
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+<!--NewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvid-->
+
+
+
+
+
+
+
+
+    
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/I98z_CD_t64" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 12: Paraan ng Pagsulat ng Kritikal na Sanaysay</h3>
+        <p class="text-muted-foreground">Nakapaloob sa vidyong ito ang mga paraan sa pagsulat ng isang kritikal na sanaysay gayundin ang mga bahagi nito at iba pa na makatutulong sa inyong pagsisimulang pagsulat ng nabanggit na akademikong sulatin.</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 823 </span>
+            <span class="text-muted-foreground">LIKES: 15</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                🎥 <strong>Deskripsyon:</strong>  
+                Ang video na ito ay tumatalakay sa isang mahalagang paksa na may kaugnayan sa wika, edukasyon, at komunikasyon. Naglalaman ito ng mahahalagang impormasyon na makakatulong sa mas malalim na pag-unawa sa konsepto.  
+                <br><br>
+        
+                <strong>🔑 Mahahalagang Punto:</strong><br>
+                ✅ <strong>Punto 1:</strong> Paliwanag tungkol sa kahulugan at saklaw ng paksa.  
+                ✅ <strong>Punto 2:</strong> Mga halimbawa at praktikal na aplikasyon sa totoong buhay.  
+                ✅ <strong>Punto 3:</strong> Epekto at kahalagahan nito sa lipunan at edukasyon.  
+                ✅ <strong>Punto 4:</strong> Mga pangunahing konsepto na dapat tandaan at isabuhay.  
+                <br><br>
+        
+                📌 <strong>Mga Dapat Tandaan:</strong>  
+                - Ang tamang paggamit ng wika ay may malaking epekto sa komunikasyon.  
+                - Ang pag-unawa sa konsepto ay nakakatulong sa mas epektibong pagpapahayag ng ideya.  
+                <br><br>
+        
+                🔗 <strong>Panoorin ang video dito:</strong>  
+                <a href="https://youtu.be/I98z_CD_t64" target="_blank">Pindutin para mapanood</a>  
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+    
+
+
+
+
+
+<!--NewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvid-->
+
+
+
+
+
+            <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/2ZW8o7TD7ug" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 12: Pagsulat ng Kritikal na Sanaysay/SHS</h3>
+            
+            <p class="text-muted-foreground">No description has been added to this video.g</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 14,535</span>
+            <span class="text-muted-foreground">LIKES: 191</span>
+        </div>
+
+
+
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+
+
+
+                <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+                <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+                    <p class="max-h-96 overflow-auto">
+                        🎥 <strong>Deskripsyon:</strong>  
+                        Ang video na ito ay naglalaman ng mahalagang impormasyon tungkol sa paksa na may kaugnayan sa wika, komunikasyon, at edukasyon. Layunin nitong ipaliwanag ang konsepto at aplikasyon nito sa pang-araw-araw na buhay.  
+                        <br><br>
+                
+                        <strong>🔑 Mahahalagang Punto:</strong><br>
+                        ✅ <strong>Punto 1:</strong> Pagtalakay sa pangunahing konsepto ng paksa.  
+                        ✅ <strong>Punto 2:</strong> Mga halimbawa at aktwal na aplikasyon sa lipunan.  
+                        ✅ <strong>Punto 3:</strong> Ang epekto nito sa edukasyon at iba pang larangan.  
+                        ✅ <strong>Punto 4:</strong> Paano ito makakatulong sa epektibong komunikasyon.  
+                        <br><br>
+                
+                        📌 <strong>Mga Dapat Tandaan:</strong>  
+                        - Mahalaga ang pag-unawa sa paksa upang magamit ito nang tama sa pang-araw-araw na buhay.  
+                        - Ang tamang paggamit ng wika ay nakakatulong sa mas malinaw na pagpapahayag ng ideya.  
+                        <br><br>
+                
+                        🔗 <strong>Panoorin ang video dito:</strong>  
+                        <a href="https://youtu.be/2ZW8o7TD7ug" target="_blank">Pindutin para mapanood</a>  
+                    </p>
+                </div>
+                
+                
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+    
+    
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2024 WEST</p>
+</footer>
+        
+</body>
+</html>

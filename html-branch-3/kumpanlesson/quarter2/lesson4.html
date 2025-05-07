@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kumunikasyon at Pananaliksik sa Wikang Pilipino - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+               <a href="../../../kumpan2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">ARALIN 4</h2>
+                <p class="text-lg mt-2">Komunikasyon at Pananaliksik</p>
+                <p class="text-lg">sa Wikang Pilipino</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[30px] font-semibold mx-[10px]">
+            DAHILAN, ANYO AT PAMAMARAAN SA PAGGAMIT NG WIKA SA IBA'T IBANG SITWASYON
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+        
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/36A2a44vn0U" 
+        title="YouTube Live Stream" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 4: GRADE 11 FILIPINO Q2 : DAHILAN, ANYO AT PAMAMARAAN SA PAGGAMIT NG WIKA SA IBA'T IBANG SITWASYON</h3>
+        <p class="text-muted-foreground">LST: ANNABELLE C. DATULAYTA
+            SCHOOL: GTDLNHS</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 4,891  </span>
+            <span class="text-muted-foreground">LIKES: 45</span>
+        </div>
+
+
+
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                📚 <strong>Deskripsyon:</strong>  
+                Tinalakay sa bidyong ito ang iba't ibang **dahilan, anyo, at pamamaraan sa paggamit ng wika sa iba't ibang sitwasyon**. Layunin nitong ipakita kung paano nagbabago ang paggamit ng wika batay sa konteksto at pangangailangan ng komunikasyon.  
+                <br><br>
+        
+                <strong>🔑 Mahahalagang Punto:</strong><br>
+                📝 <strong>1. Dahilan sa Paggamit ng Wika</strong>  
+                - Ang wika ay ginagamit upang **magpahayag ng damdamin, magbigay ng impormasyon, at makipag-ugnayan** sa iba.  
+                - Mahalaga ito sa pagtataguyod ng kultura at identidad ng isang grupo o lipunan.  
+                <br><br>
+        
+                🗂️ <strong>2. Anyo ng Wika</strong>  
+                - **Pormal at di-pormal** na anyo ng wika ang ginagamit depende sa sitwasyon.  
+                - Halimbawa, pormal na wika sa opisyal na usapan at di-pormal sa casual na usapan.  
+                <br><br>
+        
+                🔄 <strong>3. Pamamaraan sa Paggamit ng Wika</strong>  
+                - **Berbal at di-berbal** na komunikasyon ang dalawang pangunahing pamamaraan.  
+                - Kasama sa berbal ang pagsasalita at pagsusulat, habang sa di-berbal naman ay ang kilos, ekspresyon ng mukha, at iba pa.  
+                <br><br>
+        
+                ✅ <strong>Mga Dapat Tandaan:</strong>  
+                - Angkop na gamitin ang wika ayon sa konteksto at kausap.  
+                - Pag-unawa sa kultura at background ng kausap upang maiwasan ang hindi pagkakaunawaan.  
+                - Patuloy na paglinang ng kasanayan sa wika upang maging epektibo sa komunikasyon.  
+                <br><br>
+        
+                🎥 <strong>Panoorin ang buong bidyo dito:</strong>  
+                <a href="https://www.youtube.com/live/36A2a44vn0U?si=4nBuBTmFqm1iHny" target="_blank">Grade 11 Filipino Q2: Dahilan, Anyo at Pamamaraan sa Paggamit ng Wika sa Iba't Ibang Sitwasyon</a>  
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+<!--NewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvid-->
+
+
+
+
+
+
+
+
+    
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/Sh_MVlg3Isw" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 4: Komunikasyon at Pananaliksik:Modyul 3 "Dahilan,Anyo at Pamamaraan ng Wika sa iba't-ibang Sitwasyon"</h3>
+        <p class="text-muted-foreground">No description has been added to this video.</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 300 </span>
+            <span class="text-muted-foreground">LIKES: 9</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                🎙️ <strong>Deskripsyon:</strong>  
+                Tinalakay sa bidyong ito ang tamang paggamit ng **wika sa panayam at pagbabalita sa radyo at telebisyon**. Binibigyang-diin ang kahalagahan ng malinaw, tumpak, at epektibong komunikasyon sa paghahatid ng impormasyon sa publiko.  
+                <br><br>
+        
+                <strong>🔑 Mahahalagang Punto:</strong><br>
+                🗣️ <strong>1. Wika sa Panayam</strong>  
+                - Ginagamit upang makuha ang pananaw at impormasyon mula sa mga eksperto o saksi.  
+                - Dapat maging malinaw, organisado, at walang kinikilingan ang mga tanong.  
+                - Angkop na gamitin ang pormal o impormal na wika depende sa konteksto ng panayam.  
+                <br><br>
+        
+                📻 <strong>2. Wika sa Balita sa Radyo</strong>  
+                - **Direkta at madaling maunawaan** ang estilo ng pagbabalita dahil walang visual na elemento.  
+                - Mahalaga ang tamang tono, bilis, at intonasyon upang mapanatili ang atensyon ng tagapakinig.  
+                - Karaniwang ginagamit ang Filipino o Ingles, depende sa estasyon at target na audience.  
+                <br><br>
+        
+                📺 <strong>3. Wika sa Balita sa Telebisyon</strong>  
+                - Pinagsasama ang **audio at visual** na elemento upang mas epektibong maihatid ang balita.  
+                - Mahalaga ang ekspresyon ng mukha, kilos ng katawan, at visual aids sa pagpapaliwanag ng balita.  
+                - Dapat iwasan ang paggamit ng jargon at tiyaking naiintindihan ng masa ang wika.  
+                <br><br>
+        
+                ✅ <strong>Mga Dapat Tandaan:</strong>  
+                - Gumamit ng malinaw at tumpak na wika sa lahat ng pagkakataon.  
+                - Iwasan ang bias at tiyaking beripikado ang lahat ng impormasyon bago ibalita.  
+                - Iakma ang paraan ng pagpapahayag ayon sa medium na ginagamit, maging ito man ay radyo o telebisyon.  
+                <br><br>
+        
+                🎥 <strong>Panoorin ang buong bidyo dito:</strong>  
+                <a href="https://youtu.be/Sh_MVlg3Isw?si=IiIcc1B_g9uXl9ht" target="_blank">Aralin 1: Wika sa Panayam at Balita sa Radyo at Telebisyon</a>  
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+    
+
+
+
+
+
+<!--NewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvid-->
+
+
+
+
+
+            <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/BcHRPS60eBg" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 4: GRADE 11 FILIPINO QUARTER 2 WEEK 3 DAHILAN, ANYO AT PAMAMARAAN SA PAGGAMIT NG WIKA SA IBA'T IBANG S</h3>
+        <p class="text-muted-foreground">Disclaimer : this channel is intended for educational purposes only. no copyright infringement intended. Val Live DO NOT OWN ANY AUDIO, VIDEO SCENES and MUSIC in this VIDEO. all the RIGHTS RESERVED to it's rightful owner. 
+
+            Thank You for visiting Valenzuela Live Channel
+            Schedule of Valenzuela FB Live is Monday and Wednesday
+            Uploading of Lesson after Live Session</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 636 </span>
+            <span class="text-muted-foreground">LIKES: 2</span>
+        </div>
+
+
+
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+
+
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                🗣️ <strong>Deskripsyon:</strong>  
+                Tinalakay sa bidyong ito ang iba't ibang **gamit ng wika sa lipunan** at kung paano ito nakakaapekto sa ating pang-araw-araw na buhay. Binibigyang-diin ang papel ng wika sa pagpapahayag, pakikipag-ugnayan, at pagbuo ng kultura.  
+                <br><br>
+        
+                <strong>🔑 Mahahalagang Punto:</strong><br>
+                🏛️ <strong>1. Instrumental na Gamit ng Wika</strong>  
+                - Ginagamit ang wika upang **matugunan ang pangangailangan** ng tao tulad ng paghingi ng tulong o pagpapahayag ng kagustuhan.  
+                - Halimbawa: Pag-order ng pagkain sa isang restawran.  
+                <br><br>
+        
+                📢 <strong>2. Regulatori na Gamit ng Wika</strong>  
+                - Ginagamit upang **kontrolin o gabayan** ang kilos ng iba.  
+                - Halimbawa: Pagbibigay ng panuto o direksyon.  
+                <br><br>
+        
+                💡 <strong>3. Heuristik na Gamit ng Wika</strong>  
+                - Ginagamit sa **pagkuha o paghahanap ng impormasyon**.  
+                - Halimbawa: Pagtatanong o pananaliksik.  
+                <br><br>
+        
+                🗨️ <strong>4. Interaksyonal na Gamit ng Wika</strong>  
+                - Ginagamit upang **mapanatili at mapatatag ang relasyong sosyal**.  
+                - Halimbawa: Pakikipagkaibigan o pakikisalamuha.  
+                <br><br>
+        
+                🎨 <strong>5. Personal na Gamit ng Wika</strong>  
+                - Ginagamit sa **pagpapahayag ng sariling damdamin o opinyon**.  
+                - Halimbawa: Pagsulat ng talaarawan o journal.  
+                <br><br>
+        
+                ✅ <strong>Mga Dapat Tandaan:</strong>  
+                - Ang wika ay may iba't ibang gamit na tumutugon sa iba't ibang pangangailangan ng tao sa lipunan.  
+                - Mahalaga ang pag-unawa sa mga gamit ng wika upang maging epektibo sa komunikasyon at pakikipag-ugnayan sa iba.  
+                - Angkop na gamitin ang wika ayon sa konteksto at layunin ng komunikasyon.  
+                <br><br>
+        
+                🎥 <strong>Panoorin ang buong bidyo dito:</strong>  
+                <a href="https://youtu.be/BcHRPS60eBg?si=i6fnDePNndHLgwBR" target="_blank">Aralin 2: Mga Gamit ng Wika sa Lipunan</a>  
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+    
+    
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2024 WEST</p>
+</footer>
+        
+</body>
+</html>

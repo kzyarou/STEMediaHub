@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>STEMediaHub</title>
+    
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {},
+            },
+        };
+    </script>
+
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: black;
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* Binary Effect */
+        .binary-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .binary {
+            position: absolute;
+            top: -100px;
+            font-size: clamp(18px, 4vw, 30px); /* Adjusts size based on screen */
+            font-weight: bold;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            opacity: 0.9;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Sidebar */
+        #sidebarMenu {
+            width: 80%; /* Adjust width for mobile */
+            max-width: 300px;
+        }
+
+        /* Mobile-Specific Adjustments */
+        @media (max-width: 640px) {
+            .text-5xl {
+                font-size: 2rem; /* Reduce title size */
+            }
+
+            .text-lg {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+        <h1 class="text-lg md:text-xl font-bold">STEMediaHub</h1>
+        <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center gap-2">
+            <span id="menuIcon" class="transition-transform duration-300">☰</span>
+        </button>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebarMenu" class="fixed top-0 left-0 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+        <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+            <h2 class="text-lg font-bold">Control Panel</h2>
+            <button id="closeButton" class="text-xl">&times;</button>
+        </div>
+        <nav class="p-4">
+            <a href="../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+            <a href="feedback.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Provide feedback!</a>
+            <hr class="my-2">
+        </nav>
+    </div>
+
+    <!-- Content -->
+    <div class="text-center mt-20 md:mt-[70px] px-4">
+        <h1 class="text-4xl md:text-5xl font-bold">Coming Soon</h1>
+        <p class="text-base md:text-lg mt-4">We're working hard to bring something amazing. Stay tuned!</p>
+    </div>
+
+    <!-- Binary Background -->
+    <div class="binary-container" id="binaryContainer"></div>
+
+    <!-- JavaScript for Binary Effect -->
+    <script>
+        function createBinary() {
+            const container = document.getElementById("binaryContainer");
+            const binary = document.createElement("div");
+            binary.classList.add("binary");
+            binary.innerText = Math.random() > 0.5 ? "0" : "1";
+
+            const leftPosition = Math.random() * window.innerWidth;
+            binary.style.left = `${leftPosition}px`;
+            binary.style.animationDuration = `${Math.random() * 5 + 3}s`;
+
+            container.appendChild(binary);
+
+            setTimeout(() => {
+                binary.remove();
+            }, 8000);
+        }
+
+        setInterval(createBinary, 100);
+    </script>
+
+    <!-- JavaScript for Sidebar Menu -->
+    <script>
+        const menuButton = document.getElementById("menuButton");
+        const menuIcon = document.getElementById("menuIcon");
+        const sidebarMenu = document.getElementById("sidebarMenu");
+        const closeButton = document.getElementById("closeButton");
+
+        menuButton.addEventListener("click", function () {
+            sidebarMenu.classList.toggle("-translate-x-full");
+            menuIcon.classList.toggle("rotate-90");
+        });
+
+        closeButton.addEventListener("click", function () {
+            sidebarMenu.classList.add("-translate-x-full");
+            menuIcon.classList.remove("rotate-90");
+        });
+    </script>
+</body>
+</html>

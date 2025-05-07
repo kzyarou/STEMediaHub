@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>STEMediaHub</title>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+    <link rel="stylesheet" href="css/control-panel.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1e40af",
+              secondary: "#3b82f6",
+              accent: "#60a5fa",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+      }
+      .bg-pattern {
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.15) 1px,
+            transparent 1px
+          ),
+          radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 10px;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        color: #ffffff;
+      }
+      .card:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+      .nav-link {
+        position: relative;
+        overflow: hidden;
+        color: #ffffff;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #ffffff;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+      @media (max-width: 640px) {
+        .mobile-menu {
+          width: 100%;
+        }
+        .card {
+          margin: 0.5rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-pattern">
+    <header
+      class="bg-primary/95 backdrop-blur-md border-b border-white/20 sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-2xl font-bold text-white">STEMediaHub</h1>
+        <button
+          id="menuButton"
+          class="text-white hover:text-accent transition-colors"
+        >
+          <span id="menuIcon" class="text-2xl">â˜°</span>
+        </button>
+      </div>
+    </header>
+
+    <div
+      id="sidebarMenu"
+      class="fixed top-0 right-0 h-full w-80 bg-primary/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 z-50 border-l border-white/20 mobile-menu"
+    >
+      <div class="p-6 border-b border-white/20">
+        <div class="flex justify-between items-center">
+          <h2 class="text-xl font-bold text-white">Control Panel</h2>
+          <button
+            id="closeButton"
+            class="text-2xl text-white hover:text-accent transition-colors"
+          >
+            &times;
+          </button>
+        </div>
+      </div>
+      <nav class="p-6">
+        <a
+          href="misc/about.html"
+          class="block px-6 py-3 text-white hover:text-accent transition-colors nav-link"
+        >
+          About the researchers
+        </a>
+        <a
+          href="misc/feedback.html"
+          class="block px-6 py-3 text-white hover:text-accent transition-colors nav-link"
+        >
+          Provide feedback!
+        </a>
+      </nav>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-lg md:text-xl text-white mb-4">Team 3 Researchers</h2>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+          STEMediaHub
+        </h1>
+        <p class="text-lg md:text-xl text-white">
+          THE ULTIMATE LEARNING GUIDE<br />FOR STEM STUDENTS!
+        </p>
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+      >
+        <a href="earthsci2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            EARTH SCIENCE
+          </h3>
+          <p class="text-white">Explore our planet</p>
+        </a>
+        <a href="oralcom2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            ORAL COMMUNICATION
+          </h3>
+          <p class="text-white">Master your speaking skills</p>
+        </a>
+        <a href="precal2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            PRE CALCULUS
+          </h3>
+          <p class="text-white">Advanced mathematics</p>
+        </a>
+        <a href="physed2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            PHYSICAL EDUCATION
+          </h3>
+          <p class="text-white">Stay active and healthy</p>
+        </a>
+        <a href="genmath2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            GENERAL MATHEMATICS
+          </h3>
+          <p class="text-white">Core math concepts</p>
+        </a>
+        <a href="perdev2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            PERSONAL DEVELOPMENT
+          </h3>
+          <p class="text-white">Grow as an individual</p>
+        </a>
+        <a href="cenlit2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            21ST CENTURY LITERATURE
+          </h3>
+          <p class="text-white">Modern literary works</p>
+        </a>
+        <a href="kumpan2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            KOMUNIKASYON AT PANANALIKSIK
+          </h3>
+          <p class="text-white">Communication and research</p>
+        </a>
+        <a href="emtech2.html" class="card rounded-lg p-4 md:p-6 text-center">
+          <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+            EMPOWERMENT TECHNOLOGY
+          </h3>
+          <p class="text-white">Digital skills and tools</p>
+        </a>
+      </div>
+    </main>
+
+    <footer
+      class="mt-12 md:mt-20 py-6 bg-primary/95 backdrop-blur-md border-t border-white/20"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <p class="text-center text-white">
+          Â© 2025 Dolores National High School
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const menuIcon = document.getElementById("menuIcon");
+      const sidebarMenu = document.getElementById("sidebarMenu");
+      const closeButton = document.getElementById("closeButton");
+
+      menuButton.addEventListener("click", function () {
+        sidebarMenu.classList.toggle("translate-x-full");
+        menuIcon.classList.toggle("rotate-90");
+      });
+
+      closeButton.addEventListener("click", function () {
+        sidebarMenu.classList.add("translate-x-full");
+        menuIcon.classList.remove("rotate-90");
+      });
+    </script>
+  </body>
+</html>
+
+

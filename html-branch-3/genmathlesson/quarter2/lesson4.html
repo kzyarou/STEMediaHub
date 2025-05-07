@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>General Mathematics - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../genmath2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">LESSON 4</h2>
+                <p class="text-lg mt-2">General</p>
+                <p class="text-lg">Mathematics</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[70px] font-semibold">
+            Determining the inverse of a one-to-one function
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/5BpPH5Nswuw"
+                title="Solving Problems Involving Rational Functions, Equations, and Inequalities | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Solving Problems Involving Rational Functions, Equations, and Inequalities | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explains how to solve mathematical problems involving rational functions, equations, and inequalities, with step-by-step examples and applications.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 552K</span>
+            <span class="text-muted-foreground">LIKES: 7.2K</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>📚 SOLVING PROBLEMS WITH RATIONAL FUNCTIONS, EQUATIONS, AND INEQUALITIES 📊</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Rational Functions**: Functions that involve fractions where both the numerator and denominator are polynomials.<br>
+                - **Rational Equations**: Equations containing rational expressions that require finding common denominators to solve.<br>
+                - **Rational Inequalities**: Inequalities that involve rational expressions, solved by determining critical values and testing intervals.<br><br>
+
+                - **Steps for Solving Rational Equations & Inequalities**:<br>
+                  1️⃣ Find the least common denominator (LCD) and eliminate fractions.<br>
+                  2️⃣ Solve the resulting polynomial equation or inequality.<br>
+                  3️⃣ Identify critical values and test intervals for inequalities.<br>
+                  4️⃣ Check for extraneous solutions that may result in undefined expressions.<br><br>
+
+                📝 <strong>Real-Life Applications:</strong><br>
+                - **Work Problems**: Problems involving rates of work done by individuals or machines.<br>
+                - **Distance-Speed-Time Problems**: Using rational functions to solve motion-related equations.<br>
+                - **Mixture and Proportion Problems**: Determining solution concentrations using rational equations.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - How do critical values help in solving rational inequalities?<br>
+                - Why must we check for extraneous solutions when solving rational equations?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - Solve the rational inequality: (x - 3) / (x + 2) > 0.<br>
+                - A tank fills in 5 hours with one pipe and drains in 8 hours with another. How long will it take to fill the tank with both pipes open?<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Rational equations and inequalities are essential in solving real-world problems in physics, business, and engineering.<br>
+                - Understanding how to manipulate rational expressions allows for effective problem-solving.<br><br>
+
+                🚀 **Keep practicing to master rational functions and their real-world applications!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/4ZMDoVqPe6E"
+                title="Variation: Direct, Inverse, Joint, and Combined | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Variation: Direct, Inverse, Joint, and Combined | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video covers the different types of variation: direct, inverse, joint, and combined. It explains their definitions, formulas, and applications with examples.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 135K</span>
+            <span class="text-muted-foreground">LIKES: 2.1K</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>📚 UNDERSTANDING VARIATION: DIRECT, INVERSE, JOINT, AND COMBINED 📊</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Direct Variation**: When one quantity increases, the other also increases proportionally. Expressed as y = kx, where k is the constant of proportionality.<br>
+                - **Inverse Variation**: When one quantity increases, the other decreases proportionally. Expressed as y = k/x.<br>
+                - **Joint Variation**: A variable depends on two or more other variables, expressed as y = kxz (e.g., area of a triangle A = 1/2 bh).<br>
+                - **Combined Variation**: A mix of direct and inverse variations within the same equation.<br><br>
+
+                📝 <strong>Real-Life Applications:</strong><br>
+                - **Direct Variation**: Salary based on hours worked, speed and distance.<br>
+                - **Inverse Variation**: The time needed to complete a job when more workers are added.<br>
+                - **Joint Variation**: The volume of a gas varies jointly with temperature and pressure.<br>
+                - **Combined Variation**: The brightness of a lightbulb depending on both voltage and resistance.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - How can you determine the type of variation from a given data set or equation?<br>
+                - What are some real-world examples where multiple variations occur simultaneously?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - If y varies directly as x and y = 24 when x = 6, find the equation and solve for y when x = 10.<br>
+                - A machine completes a task in 10 hours with 4 workers. If the number of workers doubles, how long will the task take?<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Identifying the type of variation helps in solving problems efficiently.<br>
+                - Variation principles apply to physics, economics, and engineering.<br><br>
+
+                🚀 **Continue exploring variations and their impact on real-world scenarios!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/fUycspCDxd0"
+                title="Operations on Functions | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Operations on Functions | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explores the different operations on functions, including addition, subtraction, multiplication, division, and composition, with examples and step-by-step explanations.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 112K</span>
+            <span class="text-muted-foreground">LIKES: 4.1K</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>📚 OPERATIONS ON FUNCTIONS 📊</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Function Operations**: Combining two or more functions using basic operations.<br><br>
+
+                - **Addition (f + g)(x) = f(x) + g(x)**: The sum of two functions.<br>
+                - **Subtraction (f - g)(x) = f(x) - g(x)**: The difference between two functions.<br>
+                - **Multiplication (f × g)(x) = f(x) × g(x)**: The product of two functions.<br>
+                - **Division (f ÷ g)(x) = f(x) ÷ g(x)**: The quotient of two functions, provided g(x) ≠ 0.<br>
+                - **Composition of Functions (f ∘ g)(x) = f(g(x))**: Applying one function to the result of another.<br><br>
+
+                📝 <strong>Real-Life Applications:</strong><br>
+                - **Economics**: Calculating total cost and revenue functions.<br>
+                - **Physics**: Using functions to model motion and force.<br>
+                - **Engineering**: Combining different formulas in electrical circuits.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - How does function composition differ from multiplication?<br>
+                - What restrictions apply to function division?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - If f(x) = 2x + 3 and g(x) = x² - 1, find (f + g)(x), (f - g)(x), and (f ∘ g)(x).<br>
+                - What happens when a function is composed with itself?<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Operations on functions allow us to create new functions based on existing ones.<br>
+                - Function composition is useful in real-world applications like data processing and scientific modeling.<br><br>
+
+                🚀 **Explore how function operations apply in different fields and enhance problem-solving skills!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2025 Dolores National High School</p>
+</footer>
+        
+</body>
+</html>

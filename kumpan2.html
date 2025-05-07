@@ -1,0 +1,498 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Komunikasyon at Pananaliksik sa Wikang Pilipino</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playwrite+HU:wght@100..400&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Spicy+Rice&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/kumpan2.css" />
+    <link rel="stylesheet" href="css/control-panel.css" />
+    <style>
+      .hero-section {
+        background: linear-gradient(135deg, #c5a3f4 0%, #9d7ad1 100%);
+        min-height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transform: none !important;
+      }
+
+      .hero-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(197, 163, 244, 0.2) 0%,
+          rgba(157, 122, 209, 0.2) 100%
+        );
+        animation: gradientShift 8s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .lesson-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .quarter-section {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 1400px;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        transition: transform 0.3s ease-out;
+      }
+
+      .quarter-section:hover {
+        transform: translateY(-5px);
+      }
+
+      .lesson-btn {
+        background: white;
+        border: 2px solid #c5a3f4;
+        color: #c5a3f4;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .lesson-btn:hover {
+        background: #c5a3f4;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(197, 163, 244, 0.2);
+      }
+
+      .lesson-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(197, 163, 244, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease-out, height 0.6s ease-out;
+      }
+
+      .lesson-btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .quarter-title {
+        color: #c5a3f4;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .quarter-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: #c5a3f4;
+        margin: 1rem auto;
+        border-radius: 2px;
+      }
+
+      .quarter-title:hover {
+        color: #9d7ad1;
+      }
+
+      /* Animation Classes */
+      .fade-in {
+        opacity: 1;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 1;
+        transform: translateX(-50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 1;
+        transform: translateX(50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="flex justify-between items-center bg-[#c5a3f4] text-white p-4"
+    >
+      <h1 class="text-xl font-bold">STEMediaHub</h1>
+
+      <!-- Menu Button -->
+      <button
+        id="menuButton"
+        class="bg-[#c5a3f4] px-4 py-2 rounded flex items-center gap-2"
+      >
+        <svg
+          id="menuIcon"
+          class="w-6 h-6 transition-transform duration-300"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div
+      id="sidebarMenu"
+      class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300"
+    >
+      <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+        <h2 class="text-lg font-bold">Control Panel</h2>
+        <button id="closeButton" class="text-xl">&times;</button>
+      </div>
+      <nav class="p-4">
+        <a
+          href="index.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
+        >
+          <svg
+            class="sidebar-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+            <path d="M9 22V12h6v10" />
+          </svg>
+          Homepage
+        </a>
+        <a
+          href="html-branch-3/kumpanlesson/quizzes.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
+        >
+          <svg
+            class="sidebar-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            />
+          </svg>
+          Quizzes
+        </a>
+        <a
+          href="misc/comingsoon.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
+        >
+          <svg
+            class="sidebar-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            />
+          </svg>
+          Modules
+        </a>
+        <hr class="my-4 border-gray-700" />
+        <a
+          href="misc/comingsoon.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded plat-button"
+        >
+          <svg
+            class="sidebar-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+            />
+          </svg>
+          Other Platforms
+        </a>
+      </nav>
+    </div>
+
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const menuIcon = document.getElementById("menuIcon");
+      const sidebarMenu = document.getElementById("sidebarMenu");
+      const closeButton = document.getElementById("closeButton");
+
+      menuButton.addEventListener("click", function () {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-90");
+      });
+
+      closeButton.addEventListener("click", function () {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-90");
+      });
+
+      document.addEventListener("click", function (event) {
+        if (
+          !sidebarMenu.contains(event.target) &&
+          !menuButton.contains(event.target)
+        ) {
+          sidebarMenu.classList.add("-translate-x-full");
+          menuIcon.classList.remove("rotate-90");
+        }
+      });
+    </script>
+
+    <main>
+      <section class="hero-section">
+        <h2 class="who-text">Welcome to</h2>
+        <h1 class="stem-text">Maligayang pagdating sa</h1>
+        <p class="subtitle">Kumunikasyon at Pananaliksik sa Wikang Pilipino!</p>
+      </section>
+
+      <div class="quarter-section">
+        <h2 class="quarter-title">Quarter 1</h2>
+        <div class="lesson-grid">
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson1.html"
+            class="lesson-btn"
+            >Aralin 1</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson2.html"
+            class="lesson-btn"
+            >Aralin 2</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson3.html"
+            class="lesson-btn"
+            >Aralin 3</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson4.html"
+            class="lesson-btn"
+            >Aralin 4</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson5.html"
+            class="lesson-btn"
+            >Aralin 5</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson6.html"
+            class="lesson-btn"
+            >Aralin 6</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson7&8.html"
+            class="lesson-btn"
+            >Aralin 7&8</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson9.html"
+            class="lesson-btn"
+            >Aralin 9</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson10.html"
+            class="lesson-btn"
+            >Aralin 10</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson11.html"
+            class="lesson-btn"
+            >Aralin 11</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson12.html"
+            class="lesson-btn"
+            >Aralin 12</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter1/lesson13.html"
+            class="lesson-btn"
+            >Aralin 13</a
+          >
+        </div>
+      </div>
+
+      <div class="quarter-section">
+        <h2 class="quarter-title">Quarter 2</h2>
+        <div class="lesson-grid">
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson1.html"
+            class="lesson-btn"
+            >Aralin 1</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson2.html"
+            class="lesson-btn"
+            >Aralin 2</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson3.html"
+            class="lesson-btn"
+            >Aralin 3</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson4.html"
+            class="lesson-btn"
+            >Aralin 4</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson5.html"
+            class="lesson-btn"
+            >Aralin 5</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson6.html"
+            class="lesson-btn"
+            >Aralin 6</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson7.html"
+            class="lesson-btn"
+            >Aralin 7</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson8.html"
+            class="lesson-btn"
+            >Aralin 8</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson9.html"
+            class="lesson-btn"
+            >Aralin 9</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson10.html"
+            class="lesson-btn"
+            >Aralin 10</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson11.html"
+            class="lesson-btn"
+            >Aralin 11</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson12.html"
+            class="lesson-btn"
+            >Aralin 12</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson13.html"
+            class="lesson-btn"
+            >Aralin 13</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson14.html"
+            class="lesson-btn"
+            >Aralin 14</a
+          >
+          <a
+            href="html-branch-3/kumpanlesson/quarter2/lesson15.html"
+            class="lesson-btn"
+            >Aralin 15</a
+          >
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

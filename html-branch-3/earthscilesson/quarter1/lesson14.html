@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Earth Science - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../../earthsci2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-[20px] font-extrabold">LESSON 14</h2>
+                <p class="text-[60px] mt-2">Earth</p>
+                <p class="text-[60px]">Science</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[30px] font-semibold">
+            How Different Types of Waste Affect People's Health and the Environment
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+        
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/Yk8_RF5sasU" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Lesson 14: G11 (Q1-W5) EXPLAIN HOW THE DIFFERENT TYPES OF WASTE AFFECT PEOPLE'S HEALTH AND THE ENVIRONMENT
+        </h3>
+        <p class="text-muted-foreground">In this video, we are going to talk about 
+            solid, liquid, and gas wastes
+            leachate
+            eutrophication
+            siltation
+            acid mine drainage 
+            improper waste disposal
+            government regulation 
+            other sources of wastes and their environmental impact
+            
+
+            </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 3,939  </span>
+            <span class="text-muted-foreground">LIKES: 51</span>
+        </div>
+        
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>G11 (Q1-W5) EXPLAIN HOW THE DIFFERENT TYPES OF WASTE AFFECT PEOPLE'S HEALTH AND THE ENVIRONMENT</strong><br><br>
+        
+                🏭 <strong>Introduction:</strong><br>
+                - Waste pollution poses serious risks to human health and the environment.<br>
+                - Different waste types release harmful pollutants that contribute to air, water, and land contamination.<br><br>
+        
+                ☣️ <strong>Harmful Pollutants:</strong><br>
+                - <strong>Carbon Monoxide (CO):</strong> Reduces oxygen supply in the body, leading to dizziness, headaches, and respiratory issues.<br>
+                - <strong>Sulfur Dioxide (SO₂):</strong> Causes acid rain, respiratory problems, and worsens conditions like asthma.<br>
+                - <strong>Nitrogen Oxides (NOₓ):</strong> Contributes to smog formation and respiratory diseases.<br>
+                - <strong>Ozone (O₃):</strong> Leads to lung irritation and aggravates chronic respiratory conditions.<br><br>
+        
+                🌍 <strong>Environmental Impact:</strong><br>
+                - Air pollution from waste burning contributes to climate change and respiratory diseases.<br>
+                - Water pollution from industrial and household waste affects marine life and drinking water sources.<br>
+                - Land pollution leads to habitat destruction, soil degradation, and biodiversity loss.<br><br>
+        
+                ✅ <strong>Solutions & Preventive Measures:</strong><br>
+                - Proper waste disposal and recycling to reduce environmental contamination.<br>
+                - Implementing stricter environmental policies to regulate industrial waste emissions.<br>
+                - Promoting awareness and community participation in sustainable waste management.<br><br>
+        
+                📢 <strong>Conclusion:</strong><br>
+                - Waste management is crucial for public health and environmental protection.<br>
+                - Reducing pollutants through sustainable practices ensures a safer and healthier future.<br>
+            </p>
+        </div>   
+        
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2024 WEST</p>
+</footer>
+        
+</body>
+</html>

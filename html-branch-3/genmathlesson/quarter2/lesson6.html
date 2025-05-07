@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>General Mathematics - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../genmath2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">LESSON 6</h2>
+                <p class="text-lg mt-2">General</p>
+                <p class="text-lg">Mathematics</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[70px] font-semibold">
+            Finding the domain and range of an inverse function
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/QooGummuy6k"
+                title="Transformations of Functions | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Transformations of Functions | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explores function transformations, including translations, reflections, stretches, and compressions, providing a visual and algebraic approach to understanding function behavior.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 158K</span>
+            <span class="text-muted-foreground">LIKES: 2.3K</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>📊 UNDERSTANDING FUNCTION TRANSFORMATIONS 🔄</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Transformations of Functions**: Modify the appearance of graphs while maintaining their fundamental shape.<br><br>
+
+                - **Types of Transformations**:<br>
+                  1️⃣ **Translations (Shifts)**: Move the graph without changing its shape.<br>
+                     - Horizontal: \( f(x - h) \) shifts right if \( h > 0 \), left if \( h < 0 \).<br>
+                     - Vertical: \( f(x) + k \) shifts up if \( k > 0 \), down if \( k < 0 \).<br><br>
+
+                  2️⃣ **Reflections**: Flip the graph over a specific axis.<br>
+                     - Over the x-axis: \( -f(x) \) (flips vertically).<br>
+                     - Over the y-axis: \( f(-x) \) (flips horizontally).<br><br>
+
+                  3️⃣ **Stretching & Compressing**:<br>
+                     - **Vertical Stretch**: \( af(x) \), where \( |a| > 1 \), makes the graph taller.<br>
+                     - **Vertical Compression**: \( af(x) \), where \( 0 < |a| < 1 \), makes the graph flatter.<br>
+                     - **Horizontal Stretch/Compression**: \( f(bx) \), where \( |b| > 1 \) compresses, \( 0 < |b| < 1 \) stretches.<br><br>
+
+                📝 <strong>Supporting Evidence:</strong><br>
+                - **Graphical Representations**: Helps visualize how each transformation affects the function.<br>
+                - **Algebraic Expressions**: Understanding function notation is key to predicting transformations.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - How do transformations affect the domain and range of a function?<br>
+                - Why does reflecting over the y-axis result in replacing \( x \) with \( -x \) in the function equation?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - How does the graph of \( f(x) = (x - 3)^2 + 2 \) compare to \( f(x) = x^2 \)?<br>
+                - If the function \( g(x) = -2(x + 1)^3 - 4 \) is given, describe its transformations.<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Transformations allow functions to be shifted, reflected, stretched, or compressed.<br>
+                - Mastering transformations helps in graphing and analyzing real-world applications of functions.<br><br>
+
+                🚀 **Experiment with transformations by applying different values to function equations!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/TS0onOS6eIo"
+                title="Operations on Functions | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Operations on Functions | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explores the fundamental operations on functions, including addition, subtraction, multiplication, division, and composition, with examples and applications.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 52K</span>
+            <span class="text-muted-foreground">LIKES: 636</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>📊 OPERATIONS ON FUNCTIONS 🔢</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Operations on Functions**: Just like numbers, functions can be combined through various operations.<br><br>
+
+                - **Basic Function Operations**:<br>
+                  1️⃣ **Addition**: \( (f + g)(x) = f(x) + g(x) \)<br>
+                  2️⃣ **Subtraction**: \( (f - g)(x) = f(x) - g(x) \)<br>
+                  3️⃣ **Multiplication**: \( (f \cdot g)(x) = f(x) \cdot g(x) \)<br>
+                  4️⃣ **Division**: \( \left(\frac{f}{g}\right)(x) = \frac{f(x)}{g(x)} \), where \( g(x) \neq 0 \).<br><br>
+
+                - **Function Composition**:<br>
+                  - \( (f \circ g)(x) = f(g(x)) \), meaning the output of \( g(x) \) is used as the input of \( f(x) \).<br>
+                  - Order matters: \( f(g(x)) \neq g(f(x)) \) in most cases.<br><br>
+
+                📝 <strong>Supporting Evidence:</strong><br>
+                - **Algebraic Properties**: Functions follow arithmetic rules when combined through addition, subtraction, multiplication, and division.<br>
+                - **Graphical Analysis**: Graphs of combined functions illustrate their interaction visually.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - What happens when two functions are added, subtracted, multiplied, or divided?<br>
+                - How does function composition differ from basic operations?<br>
+                - Why is \( g(x) \neq 0 \) required in function division?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - Given \( f(x) = 2x + 3 \) and \( g(x) = x^2 - 1 \), find \( (f + g)(x) \), \( (f - g)(x) \), and \( (f \cdot g)(x) \).<br>
+                - Compute \( (f \circ g)(x) \) and \( (g \circ f)(x) \), and explain the difference.<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Understanding function operations helps in analyzing real-world relationships between different variables.<br>
+                - Function composition is a powerful tool for modeling complex processes.<br><br>
+
+                🚀 **Explore different function operations and their applications in various mathematical and scientific contexts!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/VI5Hg4J36x0"
+                title="Inverse Functions | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Inverse Functions | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explains inverse functions, how to determine whether a function has an inverse, and the step-by-step process of finding the inverse algebraically and graphically.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 28k</span>
+            <span class="text-muted-foreground">LIKES: 428</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>🔄 INVERSE FUNCTIONS 🔄</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Inverse Function Definition**: The inverse of a function reverses the input-output relationship. If \( f(x) \) maps \( x \) to \( y \), then the inverse function \( f^{-1}(x) \) maps \( y \) back to \( x \).<br><br>
+
+                - **One-to-One Functions**: A function must be one-to-one (pass the horizontal line test) to have an inverse that is also a function.<br><br>
+
+                - **Finding the Inverse of a Function**:<br>
+                  1️⃣ Replace \( f(x) \) with \( y \).<br>
+                  2️⃣ Swap \( x \) and \( y \).<br>
+                  3️⃣ Solve for \( y \) in terms of \( x \).<br>
+                  4️⃣ Replace \( y \) with \( f^{-1}(x) \).<br><br>
+
+                - **Graphical Interpretation**: The graph of an inverse function is the reflection of the original function across the line \( y = x \).<br><br>
+
+                📝 <strong>Supporting Evidence:</strong><br>
+                - **Horizontal Line Test**: A function has an inverse function if and only if it is one-to-one.<br>
+                - **Algebraic Verification**: If \( f(f^{-1}(x)) = x \) and \( f^{-1}(f(x)) = x \), then the functions are true inverses.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - Why do some functions not have inverses?<br>
+                - How can restricting the domain allow non-one-to-one functions to have an inverse?<br>
+                - What real-world scenarios involve inverse functions?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - Find the inverse of \( f(x) = 3x + 5 \).<br>
+                - Does \( f(x) = x^2 \) have an inverse? If not, how can we modify its domain?<br>
+                - Graph \( f(x) = \frac{x - 2}{3} \) and its inverse on the same coordinate plane.<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - The inverse of a function swaps inputs and outputs.<br>
+                - Not all functions have inverses unless they are one-to-one.<br>
+                - Graphing helps visualize the inverse as a reflection over \( y = x \).<br><br>
+
+                🚀 **Deepen your understanding by exploring more inverse functions and their applications!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2025 Dolores National High School</p>
+</footer>
+        
+</body>
+</html>

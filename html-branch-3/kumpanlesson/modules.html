@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Kumunikasyon at Pananaliksik - Modules</title>
+        <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <div class="bg-background text-foreground min-h-screen flex flex-col">
+            
+            <!-- Header -->
+            <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+                <h1 class="text-xl font-bold">STEMediaHub</h1>
+                <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+                    <span id="menuIcon" class="transition-transform duration-300">☰</span>
+                </button>
+            </header>
+                    <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../kumpan2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+    
+            <!-- Main Content Wrapper -->
+<div class="flex-grow max-w-5xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center text-blue-600">Kumunikasyon at Pananaliksik sa Wikang Pilipino - Modules</h1>
+    
+   <!-- Main Content Wrapper -->
+<div class="flex-grow max-w-5xl mx-auto p-6">
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Naiuugnay ang mga konseptong pangwika sa mga napakinggang sitwasyong pangkomunikasyon sa radyo, talumpati, at mga panayam.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod2_Konseptong-Pangwika-Wikang-Pambansa_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Natutukoy ang mga kahulugan at kabuluhan ng mga konseptong pangwika.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod1_Wika-Kahulugan-at-Kabuluhan-ng-Wika_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Naiuugnay ang mga konseptong pangwika sa mga napanood na sitwasyong pangkomunikasyon sa telebisyon (Halimbawa: Tonight with Arnold Clavio, State of the Nation, Mareng Winnie, Word of the Lourd).</h2>
+            <a href="https://www.scribd.com/document/513086722/Fil11-Q1-Mod1-Konseptong-Pangwika-v3-1" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Naiuugnay ang mga konseptong pangwika sa sariling karanasan, pananaw, at mga karanasan.</h2>
+            <a href="https://depedtambayan.net/komunikasyon-at-pananaliksik-sa-wika-at-kulturang-pilipino-unang-markahan-modyul-4-konseptong-pangwika-rehistro-barayti-ng-wika/" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nagagamit ang kaalaman sa modernong teknolohiya (Facebook, Google, at iba pa) sa pag-unawa sa mga konseptong pangwika.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod5_Mga-Konseptong-Pangwika_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nabibigyang-kahulugan ang mga komunikatibong gamit ng wika sa lipunan (Ayon kay M. A. K. Halliday).</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod6_Gamit-ng-Wika-sa-Lipunan-Instrumental-at-Regulatori_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Natutukoy ang gamit ng wika sa lipunan sa pamamagitan ng mga napakinggang usapan sa telebisyon at pelikula (Halimbawa: Be Careful with My Heart, Got to Believe, Ekstra, On The Job, Word of the Lourd).</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod1_WikasaPanayamatBalitasaRadyoatTelebisyon_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Naipapaliwanag nang pasalita ang gamit ng wika sa lipunan sa pamamagitan ng mga pagbibigay-halimbawa.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod7_gamitngwikasalipunan_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nagagamit ang mga cohesive device sa pagpapaliwanag ng gamit ng wika sa lipunan.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod7_gamitngwikasalipunan_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakapagsasaliksik ng mga halimbawang sitwasyon na nagpapakita ng gamit ng wika sa lipunan.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod8_paraanngpaggamitngwikasalipunan_V2-.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakapagbibigay ng opinyon o pananaw kaugnay sa mga napakinggang talakayan sa wikang pambansa.</h2>
+            <a href="https://pt.scribd.com/document/492062176/Aktibiti-38-Module-7-Komunikasyon" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nasusuri ang mga pananaw ng iba’t ibang awtor sa isinulat na kasaysayan ng wika.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod11_Pananaw-ng-Ibat-ibang-Awtor-sa-Wikang-Pambansa_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Natutukoy ang mga pinagdaanang pangyayari / kaganapan tungo sa pagbuo at pag-unlad ng Wikang Pambansa.</h2>
+            <a href="https://depedtambayan.net/komunikasyon-at-pananaliksik-sa-wika-at-kulturang-pilipino-unang-markahan-modyul-9-kasaysayan-ng-wikang-pambansa/" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakasusulat ng sanaysay na tumatalunton sa isang partikular na yugto ng kasaysayan ng Wikang Pambansa.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod12_Sanaysay_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Natitiyak ang mga sanhi at bunga ng mga pangyayaring may kaugnayan sa pag-unlad ng Wikang Pambansa.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/KPWKP_q1_mod13_SanhiatBunga_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakagagawa ng isang sanaysay batay sa isang pananaw tungkol sa aspektong kultural o lingguwistiko ng napiling komunidad.</h2>
+            <a href="https://www.studocu.com/ph/document/western-institute-of-technology/asian-cuisine/komunikasyon-11-q1-mod8-paggawa-ng-isang-sanaysay-version-3-converted/37323866" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Natutukoy ang iba't ibang paggamit ng wika sa mga napakinggang pahayag mula sa mga panayam at balita sa radyo at telebisyon.            </h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod1_WikasaPanayamatBalitasaRadyoatTelebisyon_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Natutukoy ang iba't ibang paggamit ng wika sa mga nabasang pahayagan mula sa mga blog, social media posts, at iba pa.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod2_SitwasyongPangwikasaSocialMedia_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nasusuri at naisasalangalang ang mga lingguwistik at kultural na pagkakaiba-iba sa lipunang Pilipino sa mga pelikula at dulang napanood.<</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_Q2_Mod3_Sitwasyong-Pangwika-sa-Pelikula-at-Dula_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Naipapaliwanag nang pasalita ang iba't ibang dahilan, anyo, at paraan ng paggamit ng wika sa iba't ibang sitwasyon.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_Q2_Mod4_Sitwasyong-Pangwika-sa-Larangan-ng-Edukasyon-Pamahalaan-at-Kalakalan_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakasusulat ng mga tekstong nagpapakita ng mga kalagayang pangwika sa kulturang Pilipino.</h2>
+            <a href="https://depedtambayan.net/sitwasyong-pangwika-sa-panahon-ng-modernisasyon/" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Natutukoy ang iba't ibang register at barayti ng wika na ginagamit sa iba't ibang sitwasyon (Halimbawa: Medisina, Abogasya, Media, Social Media, Inhinyeriya, Negosyo, at iba pa) sa pamamagitan ng mga balita at mga terminong ginamit sa mga larangang ito.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod6_Rehistro-at-Barayti-ng-Wika_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakagagawa ng pag-aaral gamit ang social media sa pagsusuri at pagsulat ng mga tekstong nagpapakita ng iba't ibang sitwasyon ng paggamit ng wika.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod7_Pagsusuri-ng-mga-Teksto-Gamit-ang-Social-Media_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Natutukoy ang mga angkop na salita, pangungusap ayon sa konteksto ng paksang napakinggan sa mga balita sa radyo at telebisyon.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod8_Wika-sa-Konteksto-ng-Radyo-at-Telebisyon_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nabibigyang-kahulugan ang mga salitang ginamit sa talakayan.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_Q2_Mod9_-Kakayahang-Lingguwistiko_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Napipili ang angkop na mga salita at paraan ng paggamit nito sa mga usapan o talakayan batay sa kausap, pinag-uusapan, lugar, panahon, layunin, at grupong kinabibilangan.</h2>
+            <a href="https://depedtambayan.net/kakayahang-komunikatibo-ng-mga-pilipino/" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nahihinuha ang layunin ng isang kausap batay sa paggamit ng mga salita at paraan ng pagsasalita.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_Q2_Mod11_Kakayahang-Pragmatiko_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakabubuo ng mga kritikal na sanaysay ukol sa iba't ibang paraan ng paggamit ng wika ng iba't ibang grupong sosyal at kultural sa Pilipinas.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_Q2_Mod12_Pagsulat-ng-Kritikal-na-Sanaysay_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nasusuri ang ilang pananaliksik na pumapaksa sa wika at kulturang Pilipino.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod13_Pagsusuri-sa-Pananaliksik_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Naiisa-isa ang mga hakbang sa pagbuo ng isang makabuluhang pananaliksik.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod14_Hakbang-sa-Pagsulat-ng-Pananaliksik_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nagagamit ang angkop na mga salita at pangungusap upang mapag-ugnay-ugnay ang mga ideya sa isang sulatin.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod15_Pag-uugnay-ng-mga-Ideya_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakasusulat ng isang panimulang pananaliksik sa mga penomenang kultural at panlipunan sa bansa.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod16_Pagsulat-ng-Pananaliksik_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Nakasusulat ng isang panimulang pananaliksik sa mga penomenang kultural at panlipunan sa bansa.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/11/KPWKP_q2_mod16_Pagsulat-ng-Pananaliksik_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+</div>
+            <!-- Footer -->
+<footer class="w-full p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2025 Dolores National High School</p>
+</footer>
+
+    
+        </div>
+    
+        <script>
+            const menuButton = document.getElementById("menuButton");
+            const menuIcon = document.getElementById("menuIcon");
+            const sidebarMenu = document.getElementById("sidebarMenu");
+    
+            menuButton.addEventListener("click", () => {
+                sidebarMenu.classList.toggle("-translate-x-full");
+                menuIcon.classList.toggle("rotate-180");
+            });
+    
+            document.getElementById("closeButton").addEventListener("click", () => {
+                sidebarMenu.classList.add("-translate-x-full");
+                menuIcon.classList.remove("rotate-180");
+            });
+        </script>
+    </body>
+    
+
+</html>

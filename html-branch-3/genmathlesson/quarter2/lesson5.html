@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>General Mathematics - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../genmath2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">LESSON 1</h2>
+                <p class="text-lg mt-2">General</p>
+                <p class="text-lg">Mathematics</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[70px] font-semibold">
+            Representing an inverse function through its: (a) table of values, and (b) graph(p)
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/YEZWPuA_6I0"
+                title="Inverse Functions | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Inverse Functions | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explains inverse functions, how to find them algebraically, and their significance in mathematics, including real-world applications.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 148K</span>
+            <span class="text-muted-foreground">LIKES: 2.2K</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>🔄 UNDERSTANDING INVERSE FUNCTIONS 🔄</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Inverse Function**: A function that reverses the effect of the original function, denoted as f⁻¹(x).<br><br>
+
+                - **Finding the Inverse**:<br>
+                  1️⃣ Replace f(x) with y.<br>
+                  2️⃣ Swap x and y in the equation.<br>
+                  3️⃣ Solve for y in terms of x.<br>
+                  4️⃣ Replace y with f⁻¹(x).<br><br>
+
+                - **Verification**: The inverse function satisfies (f ∘ f⁻¹)(x) = x and (f⁻¹ ∘ f)(x) = x.<br><br>
+
+                - **Graphical Representation**:<br>
+                  - The graph of an inverse function is a reflection of the original function across the line y = x.<br>
+                  - Only one-to-one functions have inverses (use the Horizontal Line Test).<br><br>
+
+                📝 <strong>Real-Life Applications:</strong><br>
+                - **Engineering**: Converting between different measurement units.<br>
+                - **Cryptography**: Using inverse functions in encryption and decryption.<br>
+                - **Physics**: Finding inverse relationships in motion and force equations.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - Why do some functions not have an inverse? How can restrictions be applied to ensure an inverse exists?<br>
+                - How do inverse functions relate to logarithms and exponentials?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - Find the inverse of f(x) = 3x + 5.<br>
+                - Graph f(x) = x² and explain why it does not have an inverse without restrictions.<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Inverse functions are essential for reversing mathematical operations.<br>
+                - Graphically, they are reflections across the line y = x.<br>
+                - Not all functions have inverses unless they are one-to-one or restricted.<br><br>
+
+                🚀 **Continue mastering inverse functions and explore their role in advanced mathematical concepts!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/cDsbjTLNoS8"
+                title="Transformations of Functions | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Transformations of Functions | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video covers the different types of function transformations, including translations, reflections, stretches, and compressions, and their effects on graphs.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 55k</span>
+            <span class="text-muted-foreground">LIKES: 900</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>📊 UNDERSTANDING FUNCTION TRANSFORMATIONS 🔄</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Transformations of Functions**: Modifications that change the appearance of a function’s graph without altering its fundamental properties.<br><br>
+
+                - **Types of Transformations**:<br>
+                  1️⃣ **Translations** (Shifts): Moving the graph up, down, left, or right.<br>
+                      - \( f(x) + k \) → Moves up by k units.<br>
+                      - \( f(x) - k \) → Moves down by k units.<br>
+                      - \( f(x - h) \) → Moves right by h units.<br>
+                      - \( f(x + h) \) → Moves left by h units.<br><br>
+
+                  2️⃣ **Reflections**: Flipping the graph across an axis.<br>
+                      - \( -f(x) \) → Reflects over the x-axis.<br>
+                      - \( f(-x) \) → Reflects over the y-axis.<br><br>
+
+                  3️⃣ **Stretches and Compressions**:<br>
+                      - Vertical stretch: \( af(x) \) where \( a > 1 \) makes the graph taller.<br>
+                      - Vertical compression: \( af(x) \) where \( 0 < a < 1 \) makes the graph shorter.<br>
+                      - Horizontal stretch: \( f(x/b) \) where \( b > 1 \) makes the graph wider.<br>
+                      - Horizontal compression: \( f(x/b) \) where \( 0 < b < 1 \) makes the graph narrower.<br><br>
+
+                📝 <strong>Supporting Evidence:</strong><br>
+                - **Graphical Representation**: Visualizing transformations helps in understanding how functions change under different modifications.<br>
+                - **Mathematical Rules**: Algebraic manipulations confirm how each transformation affects function behavior.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - How do multiple transformations affect the final graph of a function?<br>
+                - What is the correct order of applying transformations when analyzing a function's behavior?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - Given \( f(x) = x^2 \), describe the transformation for \( g(x) = -2(x-3)^2 + 4 \).<br>
+                - How would the graph of \( f(x) \) change if it were reflected over the y-axis and shifted 5 units down?<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Function transformations help in modifying graphs without changing their fundamental nature.<br>
+                - Combining shifts, reflections, and stretches allows for precise control over graph positioning.<br><br>
+
+                🚀 **Continue exploring function transformations and their applications in real-world scenarios!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/8xTYQaF580A"
+                title="Polynomial Functions: Definition, Degree, and Leading Coefficient | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Polynomial Functions: Definition, Degree, and Leading Coefficient | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explains polynomial functions, focusing on their definition, degree, and leading coefficient, which are essential in understanding their graphs and behavior.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 4K</span>
+            <span class="text-muted-foreground">LIKES: 72</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>📊 UNDERSTANDING POLYNOMIAL FUNCTIONS 🔢</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Polynomial Functions**: A function of the form \( f(x) = a_nx^n + a_{n-1}x^{n-1} + ... + a_1x + a_0 \), where \( a_n \neq 0 \).<br><br>
+
+                - **Degree of a Polynomial**: The highest exponent of \( x \) in the function. Determines the overall shape of the graph.<br><br>
+
+                - **Leading Coefficient**: The coefficient of the highest-degree term. Determines the end behavior of the polynomial function.<br><br>
+
+                - **End Behavior**:<br>
+                  - If the degree is **even** and the leading coefficient is **positive**, both ends of the graph go **up**.<br>
+                  - If the degree is **even** and the leading coefficient is **negative**, both ends go **down**.<br>
+                  - If the degree is **odd** and the leading coefficient is **positive**, the left end goes **down** and the right end goes **up**.<br>
+                  - If the degree is **odd** and the leading coefficient is **negative**, the left end goes **up** and the right end goes **down**.<br><br>
+
+                📝 <strong>Supporting Evidence:</strong><br>
+                - **Graphical Representations**: Show how different degrees and leading coefficients affect the shape and direction of a polynomial function.<br>
+                - **Algebraic Analysis**: Identifying the highest-degree term helps predict the function's behavior.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - How does changing the leading coefficient affect the direction of the polynomial’s graph?<br>
+                - Why does the degree of a polynomial determine how many turning points it can have?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - Given \( f(x) = -3x^4 + 5x^2 - x + 7 \), what is the degree and leading coefficient?<br>
+                - How would the graph of \( g(x) = 2x^3 - 4x \) behave at the extremes of the x-values?<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - The degree of a polynomial function affects its overall shape and turning points.<br>
+                - The leading coefficient determines whether the graph opens upward or downward.<br><br>
+
+                🚀 **Explore polynomial functions further by analyzing their zeros, intercepts, and factored forms!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2025 Dolores National High School</p>
+</footer>
+        
+</body>
+</html>

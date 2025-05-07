@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>P.E and Health - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../physed2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">LESSON 1</h2>
+                <p class="text-lg mt-2">P.E and</p>
+                <p class="text-lg">Health</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[30px] font-semibold">
+            Self-assesses health-related<br> fitness (HRF) status, barriers to <br>physical activity assessment<br> participation, and one’s diet.
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/tpA9xnFF_Fc" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Physical Education and Health || Lesson 1 || Self-Assesses Health-Related Fitness (HRF)</h3>
+        <p class="text-muted-foreground">Content Standards
+            The learner demonstrates understanding of fitness and exercise in optimizing one’s health as a habit; as requisite for physical activity assessment performance, and as a career opportunity.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 10,470</span>
+            <span class="text-muted-foreground">LIKES: 106</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>Self-Assessing Health-Related Fitness</strong><br><br>
+        
+                🎯 <strong>Overview:</strong><br>
+                This video explores the concept of health-related fitness (HRF) and provides a guide on how individuals can self-assess their fitness levels across different components.<br><br>
+        
+                🔹 <strong>Key Highlights:</strong><br>
+                ✅ <strong>What is Health-Related Fitness (HRF)?</strong><br>
+                - HRF refers to physical attributes that contribute to overall health and well-being.<br><br>
+        
+                ✅ <strong>Five Components of HRF:</strong><br>
+                - **Cardiovascular Endurance:** Measures heart and lung efficiency during exercise.<br>
+                - **Muscular Strength:** Assesses the maximum force a muscle can exert.<br>
+                - **Muscular Endurance:** Determines how long muscles can sustain activity.<br>
+                - **Flexibility:** Evaluates joint range of motion.<br>
+                - **Body Composition:** Examines the proportion of fat to lean body mass.<br><br>
+        
+                ✅ <strong>Self-Assessment Methods:</strong><br>
+                - Running tests for cardiovascular endurance.<br>
+                - Push-ups and sit-ups for muscular strength and endurance.<br>
+                - Sit-and-reach test for flexibility.<br>
+                - BMI and body fat analyzers for body composition.<br><br>
+        
+                ✅ <strong>Setting Fitness Goals:</strong><br>
+                - Tips on creating realistic and achievable health and fitness objectives based on assessment results.<br><br>
+        
+                ✅ <strong>Personalized Fitness Planning:</strong><br>
+                - How to design a fitness plan tailored to strengths and areas of improvement.<br><br>
+        
+                ✅ <strong>Tracking Progress:</strong><br>
+                - Methods for monitoring fitness improvements over time and making necessary adjustments.<br><br>
+        
+                🌱 <strong>Why It Matters:</strong><br>
+                Self-assessment in fitness helps individuals understand their health status, set meaningful goals, and take proactive steps toward a healthier lifestyle.<br><br>
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+              
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+               
+        
+        
+        
+          
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!--NEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- YouTube Video Section -->
+        <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+            <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+                <div class="relative">
+                    <!-- Embedded YouTube Video -->
+                    <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/ScmsXW2Tkwc" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">PE & Health 11 LESSON 3: Self-Assesses Health Related Participation and One’s Diet Fitness</h3>
+                    <p class="text-muted-foreground">References 
+                        SHS HOPE -1 Copyright 2020
+                        Enguero E. (2019). Physical education and health (Second ed.). Makati City, Philippines: DIWA LEARNING SYSTEM INC
+                        WHO (World Health Organization)
+                        Physical Activity
+                        @https://www.who.int/
+            
+                    </p>
+                    <div class="flex justify-between mt-2">
+                        <span class="text-muted-foreground">VIEWS: 8,583</span>
+                        <span class="text-muted-foreground">LIKES: 143</span>
+                    </div>
+            
+                    <!-- Dropdown Button -->
+                    <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+                        Read More
+                    </button>
+            
+                    <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+                    <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+                        <p class="max-h-96 overflow-auto">
+                            <strong>Self-Assessing Health-Related Participation and Diet Fitness</strong><br><br>
+                    
+                            🎯 <strong>Overview:</strong><br>
+                            This video delves into the importance of evaluating one's engagement in health-related physical activities and maintaining a balanced diet to enhance overall fitness and well-being.<br><br>
+                    
+                            🔹 <strong>Key Highlights:</strong><br>
+                            ✅ <strong>Significance of Physical Activity Participation:</strong><br>
+                            - Regular involvement in physical activities contributes to cardiovascular health, muscular strength, flexibility, and mental well-being.<br><br>
+                    
+                            ✅ <strong>Methods to Assess Physical Activity Levels:</strong><br>
+                            - Utilizing tools like activity logs or pedometers to monitor daily movement and ensure alignment with fitness goals.<br><br>
+                    
+                            ✅ <strong>Understanding Dietary Fitness:</strong><br>
+                            - Recognizing the role of a balanced diet in providing essential nutrients, supporting bodily functions, and preventing chronic diseases.<br><br>
+                    
+                            ✅ <strong>Evaluating Dietary Habits:</strong><br>
+                            - Keeping a food diary to analyze nutritional intake and identify areas for improvement.<br><br>
+                    
+                            ✅ <strong>Integrating Physical Activity with Proper Nutrition:</strong><br>
+                            - Combining regular exercise routines with a nutritious diet to achieve optimal health outcomes.<br><br>
+                    
+                            🌱 <strong>Why It Matters:</strong><br>
+                            Regular self-assessment of physical activity and dietary habits empowers individuals to make informed decisions, leading to a healthier lifestyle and improved quality of life.<br><br>
+                        </p>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                          
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                           
+                    
+                    
+                    
+                      
+                </div>
+            </div>
+            
+            <script>
+                function toggleDropdown(event) {
+                    const dropdown = event.target.nextElementSibling;
+            
+                    if (dropdown.classList.contains("max-h-0")) {
+                        dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+                    } else {
+                        dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+                    }
+                }
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+<!--NEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
+
+
+
+
+
+
+
+
+
+
+
+<!--NEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- YouTube Video Section -->
+        <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+            <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+                <div class="relative">
+                    <!-- Embedded YouTube Video -->
+                    <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/uEQRlDuc1tY" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">PE 12 Self assesses Health Related Fitness HRF Status, Barriers to Physcial Activity Assessment Pa</h3>
+                    <p class="text-muted-foreground">No description is provided in this video.
+            
+                    </p>
+                    <div class="flex justify-between mt-2">
+                        <span class="text-muted-foreground">VIEWS: 1,531 </span>
+                        <span class="text-muted-foreground">LIKES: 15</span>
+                    </div>
+            
+                    <!-- Dropdown Button -->
+                    <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+                        Read More
+                    </button>
+            
+                    <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+                    <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+                        <p class="max-h-96 overflow-auto">
+                            <strong>Self-Assessing Health-Related Fitness (HRF)</strong><br><br>
+                    
+                            🎯 <strong>Overview:</strong><br>
+                            This video provides a comprehensive guide on self-assessing health-related fitness components, emphasizing the importance of understanding and evaluating personal fitness levels to promote overall health and well-being.<br><br>
+                    
+                            🔹 <strong>Key Highlights:</strong><br>
+                            ✅ <strong>Understanding Health-Related Fitness (HRF):</strong><br>
+                            - HRF encompasses components of physical fitness that have a direct impact on overall health, including cardiovascular endurance, muscular strength, muscular endurance, flexibility, and body composition.<br><br>
+                    
+                            ✅ <strong>Self-Assessment Techniques:</strong><br>
+                            - **Cardiovascular Endurance:** Assessed through activities like timed runs or cycling tests to measure the efficiency of the heart and lungs.<br>
+                            - **Muscular Strength and Endurance:** Evaluated using exercises such as push-ups or sit-ups to determine muscle performance and fatigue resistance.<br>
+                            - **Flexibility:** Measured by tests like the sit-and-reach to assess the range of motion of joints.<br>
+                            - **Body Composition:** Analyzed using methods like BMI calculations or body fat percentage measurements to understand the proportion of fat to lean mass.<br><br>
+                    
+                            ✅ <strong>Setting Realistic Fitness Goals:</strong><br>
+                            - Emphasizes the importance of establishing achievable and personalized fitness goals based on self-assessment results to maintain motivation and track progress effectively.<br><br>
+                    
+                            ✅ <strong>Developing a Personalized Fitness Plan:</strong><br>
+                            - Guidance on creating a tailored fitness regimen that addresses individual strengths and areas for improvement, ensuring a balanced approach to enhancing all HRF components.<br><br>
+                    
+                            ✅ <strong>Monitoring and Adjusting Progress:</strong><br>
+                            - Highlights the necessity of regularly reviewing fitness progress and making necessary adjustments to the fitness plan to accommodate evolving goals and prevent plateaus.<br><br>
+                    
+                            🌱 <strong>Why It Matters:</strong><br>
+                            Regular self-assessment of health-related fitness components empowers individuals to take proactive steps toward improving their health, preventing chronic diseases, and enhancing the quality of life through informed decision-making and personalized fitness strategies.<br><br>
+                        </p>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                          
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                           
+                    
+                    
+                    
+                      
+                </div>
+            </div>
+            
+            <script>
+                function toggleDropdown(event) {
+                    const dropdown = event.target.nextElementSibling;
+            
+                    if (dropdown.classList.contains("max-h-0")) {
+                        dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+                    } else {
+                        dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+                    }
+                }
+            </script>
+
+
+
+
+
+
+
+
+
+
+        
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2024 WEST</p>
+</footer>
+        
+</body>
+</html>

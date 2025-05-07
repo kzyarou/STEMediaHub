@@ -1,0 +1,516 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>STEMediaHub</title>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+    <link rel="stylesheet" href="css/control-panel.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {},
+        },
+      };
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      main {
+        margin-top: 30px;
+        padding: 20px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      header {
+        color: white;
+        background-color: black;
+      }
+      .who-text {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #4b5563;
+      }
+      .stem-text {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+      }
+      .STEM {
+        color: #2563eb;
+      }
+      .subtitle {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #4b5563;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+      }
+      .buttons {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 15px;
+        justify-content: center;
+        padding: 1rem;
+        max-width: 100%;
+        margin: 0 auto;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+      }
+      .buttons::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+      .btn {
+        padding: 12px 20px;
+        text-align: center;
+        min-width: 180px;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform-origin: center;
+        cursor: pointer;
+        user-select: none;
+      }
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+      .btn:hover::before {
+        left: 100%;
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+      .btn:active {
+        transform: scale(0.95) translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+      }
+      .btn:focus:not(:focus-visible) {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .blue {
+        background-color: #2563eb;
+        color: white;
+      }
+      .orange {
+        background-color: #ea580c;
+        color: white;
+      }
+      .green {
+        background-color: #16a34a;
+        color: white;
+      }
+      .purple {
+        background-color: #7c3aed;
+        color: white;
+      }
+      .dark-green {
+        background-color: #15803d;
+        color: white;
+      }
+      .yellow {
+        background-color: #ca8a04;
+        color: white;
+      }
+      .gray {
+        background-color: #4b5563;
+        color: white;
+      }
+      .aquamar {
+        background-color: #0d9488;
+        color: white;
+      }
+      .black {
+        background-color: #1e293b;
+        color: white;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .btn:hover {
+        animation: pulse 1s infinite;
+      }
+      @media (max-width: 640px) {
+        .stem-text {
+          font-size: 2rem;
+          padding: 0 0.5rem;
+        }
+        .who-text {
+          font-size: 1rem;
+        }
+        .subtitle {
+          font-size: 1rem;
+          padding: 0 0.5rem;
+        }
+        .buttons {
+          gap: 10px;
+          padding: 0.5rem;
+        }
+        .btn {
+          padding: 10px 15px;
+          min-width: 150px;
+          font-size: 0.9rem;
+        }
+      }
+      #sidebarMenu {
+        background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        border-right: 2px solid rgba(255, 255, 255, 0.1);
+      }
+      #sidebarMenu .p-4 {
+        background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      }
+      #sidebarMenu nav a {
+        color: #e2e8f0;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      #sidebarMenu nav a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background: #60a5fa;
+        transform: scaleY(0);
+        transition: transform 0.2s ease;
+      }
+      #sidebarMenu nav a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+        color: #ffffff;
+      }
+      #sidebarMenu nav a:hover::before {
+        transform: scaleY(1);
+      }
+      #sidebarMenu nav a::after {
+        content: "";
+        position: absolute;
+        right: 20px;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s ease;
+        width: 16px;
+        height: 16px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3Cpolyline points='12 5 19 12 12 19'%3E%3C/polyline%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      #sidebarMenu nav a:hover::after {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      #closeButton {
+        background: rgba(255, 255, 255, 0.1);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      #closeButton:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+      }
+      #menuButton {
+        transition: all 0.3s ease;
+      }
+      #menuButton:hover {
+        transform: scale(1.05);
+        background: #1d4ed8;
+      }
+      #menuIcon {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #menuIcon.rotate-90 {
+        transform: rotate(90deg);
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      #sidebarMenu:not(.-translate-x-full) {
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .sidebar-icon {
+        width: 20px;
+        height: 20px;
+        opacity: 0.8;
+      }
+
+      /* Scroll Animation Styles */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .who-text,
+      .stem-text,
+      .subtitle,
+      .buttons {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .who-text.visible,
+      .stem-text.visible,
+      .subtitle.visible,
+      .buttons.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .buttons .btn {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .buttons.visible .btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger the button animations */
+      .buttons.visible .btn:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      .buttons.visible .btn:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      .buttons.visible .btn:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      .buttons.visible .btn:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+      .buttons.visible .btn:nth-child(5) {
+        transition-delay: 0.5s;
+      }
+      .buttons.visible .btn:nth-child(6) {
+        transition-delay: 0.6s;
+      }
+      .buttons.visible .btn:nth-child(7) {
+        transition-delay: 0.7s;
+      }
+      .buttons.visible .btn:nth-child(8) {
+        transition-delay: 0.8s;
+      }
+      .buttons.visible .btn:nth-child(9) {
+        transition-delay: 0.9s;
+      }
+    </style>
+  </head>
+  <body>
+    <header
+      class="flex justify-between items-center bg-blue-600 text-white p-4"
+    >
+      <h1 class="text-xl font-bold">STEMediaHub</h1>
+      <button
+        id="menuButton"
+        class="bg-blue-500 px-4 py-2 rounded flex items-center gap-2"
+      >
+        <svg
+          id="menuIcon"
+          class="w-6 h-6 transition-transform duration-300"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <div
+      id="sidebarMenu"
+      class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300"
+    >
+      <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+        <h2 class="text-lg font-bold">Control Panel</h2>
+        <button id="closeButton" class="text-xl">&times;</button>
+      </div>
+      <nav class="p-4">
+        <a
+          href="misc/about.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
+        >
+          <svg
+            class="sidebar-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"
+            />
+          </svg>
+          About the researchers
+        </a>
+        <a
+          href="misc/feedback.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
+        >
+          <svg
+            class="sidebar-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"
+            />
+          </svg>
+          Provide feedback!
+        </a>
+        <hr class="my-4 border-gray-700" />
+      </nav>
+    </div>
+
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const menuIcon = document.getElementById("menuIcon");
+      const sidebarMenu = document.getElementById("sidebarMenu");
+      const closeButton = document.getElementById("closeButton");
+
+      menuButton.addEventListener("click", function () {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-90");
+      });
+
+      closeButton.addEventListener("click", function () {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-90");
+      });
+
+      // Scroll Animation
+      function handleScrollAnimation() {
+        const elements = document.querySelectorAll(
+          ".who-text, .stem-text, .subtitle, .buttons"
+        );
+
+        elements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementBottom = element.getBoundingClientRect().bottom;
+
+          // Check if element is in viewport
+          if (elementTop < window.innerHeight && elementBottom > 0) {
+            element.classList.add("visible");
+          }
+        });
+      }
+
+      // Initial check for elements in view
+      window.addEventListener("load", handleScrollAnimation);
+
+      // Check on scroll
+      window.addEventListener("scroll", handleScrollAnimation);
+    </script>
+
+    <main>
+      <h2 class="who-text">Team 3 Researchers</h2>
+      <h1 class="stem-text"><span class="STEM">STEM</span>ediaHub</h1>
+      <p class="subtitle">
+        THE ULTIMATE LEARNING GUIDE <br />FOR STEM STUDENTS!
+      </p>
+
+      <div class="buttons">
+        <a href="earthsci2.html" class="btn blue">EARTH SCIENCE</a>
+        <a href="oralcom2.html" class="btn orange">ORAL COMMUNICATION</a>
+        <a href="precal2.html" class="btn green">PRE CALCULUS</a>
+        <a href="physed2.html" class="btn purple">PHYSICAL EDUCATION</a>
+        <a href="genmath2.html" class="btn dark-green">GENERAL MATHEMATICS</a>
+        <a href="perdev2.html" class="btn yellow">PERSONAL DEVELOPMENT</a>
+        <a href="cenlit2.html" class="btn gray">21ST CENTURY LITERATURE</a>
+        <a href="kumpan2.html" class="btn aquamar"
+          >KOMUNIKASYON AT PANANALIKSIK</a
+        >
+        <a href="emtech2.html" class="btn black gap">EMPOWERMENT TECHNOLOGY</a>
+      </div>
+    </main>
+
+    <footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+      <p class="text-center text-muted-foreground">
+        STEMediaHub © 2025 Dolores National High School
+      </p>
+    </footer>
+  </body>
+</html>

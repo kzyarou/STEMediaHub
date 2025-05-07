@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.subtitle {
+    font-family: azo-sans-web, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 50px;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.who-text {
+    font-family: azo-sans-web, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    margin-top: 0;
+}
+.stem-text {
+    font-family: azo-sans-web, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 10px;
+    color: rgb (0,0,255);
+    font-size: 60px;
+}
+.STEM {
+    font-family: azo-sans-web, sans-serif;
+    font-style: normal;
+    font-weight: 900;
+}
+
+body {
+    background-color: #0f3d3e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 0;
+}
+
+    body, html {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.menu-btn {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+main {
+    margin-top: 40px;
+    margin-bottom: 4px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+    
+}
+.btn:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 1), 
+            -4px -4px 8px rgba(0, 0, 0, 1);
+    transform: translateY(-2px);
+}
+
+/* Button Click Effect */
+.btn:active {
+    transform: translateY(1px);
+}
+
+.blue { background-color: #3f51b5; }
+.orange { background-color: #d98248; }
+.green { background-color: #4caf50; }
+.purple { background-color: #7e57c2; }
+.dark-green { background-color: #2e7d32; }
+.yellow { background-color: #C5A3F4; }
+.gray { background-color: #808080; }
+.aquamar { background-color: #D27F87; }
+.black { background-color: #A7E8E8; }
+

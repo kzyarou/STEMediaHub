@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oral Communication</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="css/control-panel.css" />
+    <link rel="stylesheet" href="css/oralcom2.css" />
+    <style>
+      .hero-section {
+        background: linear-gradient(135deg, #d98248 0%, #b86a3a 100%);
+        min-height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transform: none !important;
+      }
+
+      .hero-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(217, 130, 72, 0.2) 0%,
+          rgba(184, 106, 58, 0.2) 100%
+        );
+        animation: gradientShift 8s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .lesson-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .quarter-section {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 1400px;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        transition: transform 0.3s ease-out;
+      }
+
+      .quarter-section:hover {
+        transform: translateY(-5px);
+      }
+
+      .lesson-btn {
+        background: white;
+        border: 2px solid #d98248;
+        color: #d98248;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+      }
+
+      .lesson-btn:hover {
+        background: #d98248;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(217, 130, 72, 0.2);
+      }
+
+      .lesson-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(217, 130, 72, 0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease-out, height 0.6s ease-out;
+      }
+
+      .lesson-btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .quarter-title {
+        color: #d98248;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .quarter-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: #d98248;
+        margin: 1rem auto;
+        border-radius: 2px;
+      }
+
+      .quarter-title:hover {
+        color: #b86a3a;
+      }
+
+      /* Animation Classes */
+      .fade-in {
+        opacity: 1;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 1;
+        transform: translateX(-50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 1;
+        transform: translateX(50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header
+      class="flex justify-between items-center bg-[#d98248] text-white p-4"
+    >
+      <h1 class="text-xl font-bold">STEMediaHub</h1>
+
+      <!-- Menu Button -->
+      <button
+        id="menuButton"
+        class="bg-[#d98248] px-4 py-2 rounded flex items-center gap-2"
+      >
+        <svg
+          id="menuIcon"
+          class="w-6 h-6 transition-transform duration-300"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div
+      id="sidebarMenu"
+      class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300"
+    >
+      <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+        <h2 class="text-lg font-bold">Control Panel</h2>
+        <button id="closeButton" class="text-xl">&times;</button>
+      </div>
+      <nav class="p-4">
+        <a
+          href="index.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
+          >Homepage</a
+        >
+        <a
+          href="misc/comingsoon.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
+          >Quizzes</a
+        >
+        <a
+          href="misc/comingsoon.html"
+          class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded"
+          >Modules</a
+        >
+        <hr class="my-2" />
+      </nav>
+    </div>
+
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const menuIcon = document.getElementById("menuIcon");
+      const sidebarMenu = document.getElementById("sidebarMenu");
+      const closeButton = document.getElementById("closeButton");
+
+      menuButton.addEventListener("click", function () {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-90");
+      });
+
+      closeButton.addEventListener("click", function () {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-90");
+      });
+
+      document.addEventListener("click", function (event) {
+        if (
+          !sidebarMenu.contains(event.target) &&
+          !menuButton.contains(event.target)
+        ) {
+          sidebarMenu.classList.add("-translate-x-full");
+          menuIcon.classList.remove("rotate-90");
+        }
+      });
+    </script>
+
+    <main>
+      <section class="hero-section">
+        <h2 class="who-text text-3xl mb-4 text-white font-bold">
+          Team 3 Researchers
+        </h2>
+        <h1 class="stem-text text-5xl font-bold mb-4 text-white">
+          Oral Communication
+        </h1>
+        <p class="subtitle text-2xl text-white">DNHS</p>
+      </section>
+
+      <div class="quarter-section">
+        <h2 class="quarter-title">Lessons</h2>
+        <div class="lesson-grid">
+          <a href="html-branch-3/oralcomlesson/lesson1.html" class="lesson-btn"
+            >Lesson 1</a
+          >
+          <a href="html-branch-3/oralcomlesson/lesson2.html" class="lesson-btn"
+            >Lesson 2</a
+          >
+          <a href="html-branch-3/oralcomlesson/lesson3.html" class="lesson-btn"
+            >Lesson 3</a
+          >
+          <a href="html-branch-3/oralcomlesson/lesson4.html" class="lesson-btn"
+            >Lesson 4</a
+          >
+          <a href="html-branch-3/oralcomlesson/lesson5.html" class="lesson-btn"
+            >Lesson 5</a
+          >
+          <a href="html-branch-3/oralcomlesson/lesson6.html" class="lesson-btn"
+            >Lesson 6</a
+          >
+          <a href="html-branch-3/oralcomlesson/lesson7.html" class="lesson-btn"
+            >Lesson 7</a
+          >
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>General Mathematics - Modules</title>
+        <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <div class="bg-background text-foreground min-h-screen flex flex-col">
+            
+            <!-- Header -->
+            <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+                <h1 class="text-xl font-bold">STEMediaHub</h1>
+                <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+                    <span id="menuIcon" class="transition-transform duration-300">☰</span>
+                </button>
+            </header>
+                    <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../genmath2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+    
+            <!-- Main Content Wrapper -->
+<div class="flex-grow max-w-5xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center text-blue-600">Earth Science - Modules</h1>
+    
+   <!-- Main Content Wrapper -->
+<div class="flex-grow max-w-5xl mx-auto p-6">
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Represents real-life situations using functions</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod1_function_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Evaluating a Function.</h2>
+            <a href="https://www.studocu.com/ph/document/bicol-university/mathematics/module-2-evaluating-functions/67000299" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Performing addition, subtraction, multiplication, division, and composition of functions.</h2>
+            <a href="https://www.scribd.com/document/527198110/Gen-Math11-Q1-Mod3-operations-on-functions-08082020" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Solving problems involving functions.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/genmath_q1_mod4_solvingreallifeproblemsinvolvingfunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Representing real-life situations using rational functions.
+                distinguishes rational function, rational equation, and rational inequality.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod5_rationalfunctionsequationsandinequalities_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Solving rational equations and inequalities.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod6_solvingrationalequationsandinequalities_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Representing a rational function through its: (a) table of values, (b) graph, and (c) equation.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/genmath_q1_mod7_representationsofrationalfunction_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Finding the domain and range of a rational function.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/genmath_q1_mod8_TheDomainandRangeofRationalFunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Determining the: (a) intercepts; (b) zeroes; and (c) asymptotes of rational functions.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/genmath_q1_mod9_InterceptesZeroesAsymptotesofRationalFunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Solving problems involving rational functions, equations, and inequalities.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod10_solvingreallifeproblemsinvolvingrational_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Representing real-life situations using one-to-one functions.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod11_onetoonefunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Determining the inverse of a one-to-one function.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod12_theinverseofonetoonefunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Representing an inverse function through its: (a) table of values, and (b) graph.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod13_representationsofaninversefunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Finding the domain and range of an inverse function.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod14_domainandrangeofinversefunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Solving problems involving inverse functions.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/genmath_q1_mod15_solvingreal-lifeproblemsinvolvinginversefunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Representing real-life situations using exponential functions.</h2>
+            <a href="https://depedtambayan.net/general-mathematics-quarter-1-module-16-representing-real-life-situations-using-exponential-functions/" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Distinguishing between exponential function, exponential equation, and exponential inequality.            </h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod17_exponentialfunctionsequationsandinequalities_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Solving exponential equations and inequalities.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod18_solvingexponentialequationsandinequalities_v2.pdf            " class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Representing an exponential function through its: (a) table of values, (b) graph, and (c) equation.</h2>
+            <a href="https://www.scribd.com/document/528566890/genmath-q1-mod19-representationsofexponentialfunctions-v2" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Finding the domain and range of an exponential function.            </h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod20_domainandrangeofexponentialfunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">determines the intercepts, zeroes, and asymptotes of an exponential function.</h2>
+            <a href="https://www.scribd.com/document/528566887/genmath-q1-mod21-interceptszeroesandasymptotesofexponentialfunctions-v2-1" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Solving problems involving exponential functions, equations, and inequalities.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod22_solvingreallifeproblemsinvolvingexponentialfunctionsequationsandinequalities_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Representing real-life situations using logarithmic functions.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod23_representingreallifesituationsusinglogarithmicfunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Distinguishing logarithmic function, logarithmic equation, and logarithmic inequality.
+                solves logarithmic equations and inequalities.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/genmath_q1_mod24_solvinglogarithmicequationsandinequalities_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+    <!-- Grid Container -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Representing a logarithmic function through its: (a) table of values, (b) graph, and (c) equation.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/genmath_q1_mod25_RepresentationsofLogarithmicFunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Finding the domain and range of a logarithmic function.</h2>
+            <a href="https://depedtambayan.net/wp-content/uploads/2021/10/genmath_q1_mod26_DomainandRangeofLogarithmicFunctions_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+
+    <!-- Another Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Determining the intercepts, zeroes, and asymptotes of logarithmic functions.</h2>
+            <a href="https://depedtambayan.net/general-mathematics-quarter-1-module-27-intercepts-zeroes-and-asymptotes-of-logarithmic-functions/" class="text-blue-500">Download Module</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold">Solving problems involving logarithmic functions, equations, and inequalities.</h2>
+            <a href="https://pauljorelsantos.weebly.com/uploads/9/2/9/2/92921742/genmath_q1_mod28_solvingreal-lifeproblemsinvolvingexponentialfunctionsequationsandinequalities_v2.pdf" class="text-blue-500">Download Module</a>
+        </div>
+    </div>
+</div>
+            <!-- Footer -->
+<footer class="w-full p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2025 Dolores National High School</p>
+</footer>
+
+    
+        </div>
+    
+        <script>
+            const menuButton = document.getElementById("menuButton");
+            const menuIcon = document.getElementById("menuIcon");
+            const sidebarMenu = document.getElementById("sidebarMenu");
+    
+            menuButton.addEventListener("click", () => {
+                sidebarMenu.classList.toggle("-translate-x-full");
+                menuIcon.classList.toggle("rotate-180");
+            });
+    
+            document.getElementById("closeButton").addEventListener("click", () => {
+                sidebarMenu.classList.add("-translate-x-full");
+                menuIcon.classList.remove("rotate-180");
+            });
+        </script>
+    </body>
+    
+
+</html>

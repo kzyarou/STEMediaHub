@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kumunikasyon at Pananaliksik sa Wikang Pilipino - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+               <a href="../../../kumpan2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">ARALIN 1</h2>
+                <p class="text-lg mt-2">Komunikasyon at Pananaliksik</p>
+                <p class="text-lg">sa Wikang Pilipino</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[30px] font-semibold mx-[10px]">
+            Wika sa Panayam at Balita sa Radyo at Telebisyon
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+        
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/EA1cF8fDZ9c" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 1: ETULAY SHS KPWP Q2 WEEK1: Wika sa Panayam at Balita sa Radyo at Telebisyon</h3>
+        <p class="text-muted-foreground">SHS Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino
+            Quarter 2
+            Week 2: Wika sa Panayam at Balita sa Radyo at Telebisyon
+            Tutor: Angelica D. Agunod, John Ervin C. Alejoa and Vida Bianca M. Laus</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 19,739 </span>
+            <span class="text-muted-foreground">LIKES: 159</span>
+        </div>
+
+
+
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                📺 <strong>Deskripsyon:</strong>  
+                Ang bidyong ito ay isang talakayan tungkol sa paggamit ng **wika sa panayam at balita** sa radyo at telebisyon. Tinutukoy dito kung paano ginagamit ang wika upang maihatid nang malinaw at epektibo ang impormasyon sa madla.  
+                <br><br>
+        
+                <strong>🔑 Mahahalagang Punto:</strong><br>
+                🎙️ <strong>1. Wika sa Panayam</strong>  
+                - Ginagamit upang kumuha ng impormasyon mula sa mga eksperto o saksi.  
+                - Dapat maging malinaw, maayos, at may tamang tono upang maging epektibo.  
+                <br><br>
+        
+                📻 <strong>2. Wika sa Balita sa Radyo</strong>  
+                - **Direkta at malinaw** ang pagpapahayag dahil walang visual na elemento.  
+                - Mahalaga ang tamang diin, bilis, at intonasyon sa pagbabalita.  
+                <br><br>
+        
+                📺 <strong>3. Wika sa Balita sa Telebisyon</strong>  
+                - Pinagsasama ang **visual at auditory na aspeto** ng komunikasyon.  
+                - Mahalaga ang body language at ekspresyon ng mukha sa paghahatid ng balita.  
+                <br><br>
+        
+                📝 <strong>Mga Dapat Tandaan sa Mabisang Paggamit ng Wika:</strong>  
+                ✅ Gumamit ng pormal at madaling maunawaang wika.  
+                ✅ Panatilihing malinaw at maikli ang mensahe.  
+                ✅ Iwasan ang bias sa pagbabalita.  
+                <br><br>
+        
+                📺 <strong>Panoorin ang buong bidyo dito:</strong>  
+                <a href="https://www.youtube.com/watch?v=EA1cF8fDZ9c" target="_blank">ETULAY SHS KPWP Q2 WEEK 1</a>  
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+<!--NewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvid-->
+
+
+
+
+
+
+
+
+    
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/NDXkxOALns8" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 1: Wika sa Panayam at Balita sa Radyo at Telebisyon</h3>
+        <p class="text-muted-foreground">Wika sa Panayam at Balita sa Radyo at Telebisyon 
+            Quarter 1- Second Quarter</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 3,230 </span>
+            <span class="text-muted-foreground">LIKES: 63</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                🎙️ <strong>Deskripsyon:</strong>  
+                Ang bidyong ito ay nagpapaliwanag ng tamang paggamit ng **wika sa panayam at pagbabalita sa radyo at telebisyon**. Binibigyang-diin ang kahalagahan ng malinaw at epektibong komunikasyon sa pagbibigay ng impormasyon sa publiko.  
+                <br><br>
+        
+                <strong>🔑 Mahahalagang Punto:</strong><br>
+                🗣️ <strong>1. Wika sa Panayam</strong>  
+                - Ginagamit upang makakuha ng impormasyon mula sa eksperto, opisyal, o saksi.  
+                - Dapat malinaw ang tanong at walang pinapanigan.  
+                - Ginagamit ang **pormal o impormal na wika** depende sa sitwasyon.  
+                <br><br>
+        
+                📻 <strong>2. Wika sa Balita sa Radyo</strong>  
+                - **Direkta, maikli, at malinaw** dahil walang visual aid.  
+                - Mahalaga ang tamang tono, bilis, at intonasyon sa pagbabalita.  
+                - Ginagamit ang Filipino o Ingles depende sa istasyon.  
+                <br><br>
+        
+                📺 <strong>3. Wika sa Balita sa Telebisyon</strong>  
+                - Pinagsasama ang **audio at visual** para sa mas epektibong paghahatid ng balita.  
+                - Mahalaga ang ekspresyon ng mukha at body language ng nagbabalita.  
+                <br><br>
+        
+                ✅ <strong>Tips sa Mabisang Paggamit ng Wika:</strong>  
+                - Gumamit ng pormal at madaling maunawaang wika.  
+                - Iwasan ang bias sa pagbabalita.  
+                - Siguraduhing tama at beripikado ang impormasyon bago ibalita.  
+                <br><br>
+        
+                📺 <strong>Panoorin ang buong bidyo dito:</strong>  
+                <a href="https://www.youtube.com/watch?v=EA1cF8fDZ9c" target="_blank">Wika sa Panayam at Balita sa Radyo at Telebisyon</a>  
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+    
+
+
+
+
+
+<!--NewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvidNewvid-->
+
+
+
+
+
+            <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/6IGrWa9t-08" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Aralin 1 Wika sa Panayam at Balita sa Radyo at Telebisyon        </h3>
+        <p class="text-muted-foreground">Naglalaman ito  ng mga paliwanag tungkol sa Wika sa Panayam at Balita sa Radyo at Telebisyon. Makatutulong ang vidyo na ito upang maunawaan ng mga mag-aaral ang laman ng kanilang binasang modyul at ang gawaing pinagagawa sa kanila.</p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 5,293  </span>
+            <span class="text-muted-foreground">LIKES: 44</span>
+        </div>
+
+
+
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+
+
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                🎙️ <strong>Deskripsyon:</strong>  
+                Ang bidyong ito ay tumatalakay sa tamang paggamit ng **wika sa panayam at pagbabalita sa radyo at telebisyon**. Itinuturo nito kung paano dapat ihatid ang impormasyon upang maging malinaw, tumpak, at epektibo sa pagpapahayag ng mga balita at panayam.  
+                <br><br>
+        
+                <strong>🔑 Mahahalagang Punto:</strong><br>
+                🗣️ <strong>1. Wika sa Panayam</strong>  
+                - Ginagamit sa pagkuha ng impormasyon mula sa eksperto, opisyal, o saksi.  
+                - Dapat maging malinaw, direkta, at walang pinapanigan.  
+                - Angkop ang paggamit ng pormal o impormal na wika depende sa konteksto.  
+                <br><br>
+        
+                📻 <strong>2. Wika sa Balita sa Radyo</strong>  
+                - **Direkta at maikli** ang pagpapahayag upang madaling maunawaan.  
+                - Wala itong visual aid kaya mahalaga ang tamang tono, bilis, at intonasyon.  
+                - Madalas na ginagamit ang Filipino o Ingles, depende sa estasyon.  
+                <br><br>
+        
+                📺 <strong>3. Wika sa Balita sa Telebisyon</strong>  
+                - Pinagsasama ang **audio at visual** upang mas epektibong maihatid ang balita.  
+                - Mahalaga ang ekspresyon ng mukha, kilos ng katawan, at visual presentation.  
+                <br><br>
+        
+                ✅ <strong>Mga Dapat Tandaan:</strong>  
+                - Gumamit ng pormal at madaling maunawaang wika.  
+                - Iwasan ang bias at tiyaking tama ang impormasyon bago ibalita.  
+                - I-adjust ang paraan ng pagpapahayag ayon sa platform (radyo o telebisyon).  
+                <br><br>
+        
+                🎥 <strong>Panoorin ang buong bidyo dito:</strong>  
+                <a href="https://www.youtube.com/watch?v=6IGrWa9t-08" target="_blank">Aralin 1: Wika sa Panayam at Balita sa Radyo at Telebisyon</a>  
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+    
+    
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2024 WEST</p>
+</footer>
+        
+</body>
+</html>

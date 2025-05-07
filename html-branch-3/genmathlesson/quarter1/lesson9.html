@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>General Mathematics - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../../genmath2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">LESSON 9</h2>
+                <p class="text-lg mt-2">General</p>
+                <p class="text-lg">Mathematics</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[30px] font-semibold">
+            Finds the Domain and Range of a Rational Function.
+        </h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56" 
+        src="https://www.youtube.com/embed/vlYTaVPMikA" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Domain and Range of Rational Functions | General Mathematics | Prof D
+        </h3>
+        <p class="text-muted-foreground">Rational function is the ratio of two polynomial functions where the denominator polynomial is not equal to zero. It is usually represented as R(x) = P(x)/Q(x), where P(x) and Q(x) are polynomial functions . Domain is the list of all possible x values of the rational functions and range is the list of all possible y values.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 86,516 </span>
+            <span class="text-muted-foreground">LIKES: 995</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Read More
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>Domain and Range of Rational Functions</strong><br><br>
+        
+                🎯 <strong>Overview:</strong><br>
+                This video offers a detailed explanation of how to find the domain and range of rational functions, emphasizing the importance of understanding these concepts in mathematical analysis.<br><br>
+        
+                🔹 <strong>Key Highlights:</strong><br>
+                ✅ <strong>Determining the Domain:</strong><br>
+                - The domain consists of all real numbers except those that make the denominator zero.<br>
+                - To find the domain, set the denominator equal to zero and solve for \( x \); the solutions are the values to exclude from the domain.<br><br>
+        
+                ✅ <strong>Determining the Range:</strong><br>
+                - The range is the set of all possible output values ( \( y \)-values) of the function.<br>
+                - Analyzing the function's behavior, including horizontal asymptotes and critical points, helps in identifying the range.<br><br>
+        
+                🌱 <strong>Why It Matters:</strong><br>
+                Understanding the domain and range of rational functions is crucial for accurately graphing these functions and solving real-world problems involving ratios and rates.<br><br>
+        
+                📺 <strong>Watch the full tutorial:</strong> <a href="https://www.youtube.com/watch?v=vlYTaVPMikA" target="_blank">Click here</a>
+            </p>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+              
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+               
+        
+        
+        
+          
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!--NEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- YouTube Video Section -->
+        <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+            <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+                <div class="relative">
+                    <!-- Embedded YouTube Video -->
+                    <iframe class="w-full h-56" 
+                    src="https://www.youtube.com/embed/JgztOXs454Y" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">How to Find the Domain and Range of Rational Functions - Number Sense 101</h3>
+                    <p class="text-muted-foreground"> #Domain #Range #NumberSense101
+                        #NumberSense101
+                        #Domain
+                        #Range
+                        #GenMath
+                    </p>
+                    <div class="flex justify-between mt-2">
+                        <span class="text-muted-foreground">VIEWS: 186,602 </span>
+                        <span class="text-muted-foreground">LIKES: 3,300
+                        </span>
+                    </div>
+            
+                    <!-- Dropdown Button -->
+                    <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+                        Read More
+                    </button>
+            
+                    <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+                    <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+                        <p class="max-h-96 overflow-auto">
+                            <strong>How to Find the Domain and Range of Rational Functions</strong><br><br>
+                    
+                            🎯 <strong>Overview:</strong><br>
+                            This video offers a detailed tutorial on identifying the domain and range of rational functions, emphasizing step-by-step methods to analyze and determine these critical aspects.<br><br>
+                    
+                            🔹 <strong>Key Highlights:</strong><br>
+                            ✅ <strong>Determining the Domain:</strong><br>
+                            - The domain includes all real numbers except those that make the denominator zero.<br>
+                            - To find the domain, set the denominator equal to zero and solve for \( x \); the solutions are the values to exclude from the domain.<br><br>
+                    
+                            ✅ <strong>Determining the Range:</strong><br>
+                            - The range consists of all possible output values ( \( y \)-values) of the function.<br>
+                            - Analyzing the function's behavior, including horizontal asymptotes and critical points, helps in identifying the range.<br><br>
+                    
+                            🌱 <strong>Why It Matters:</strong><br>
+                            Understanding the domain and range of rational functions is crucial for accurately graphing these functions and solving real-world problems involving ratios and rates.<br><br>
+                    
+                            📺 <strong>Watch the full tutorial:</strong> <a href="https://www.youtube.com/watch?v=JgztOXs454Y" target="_blank">Click here</a>
+                        </p>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                          
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                           
+                    
+                    
+                    
+                      
+                </div>
+            </div>
+            
+            <script>
+                function toggleDropdown(event) {
+                    const dropdown = event.target.nextElementSibling;
+            
+                    if (dropdown.classList.contains("max-h-0")) {
+                        dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+                    } else {
+                        dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+                    }
+                }
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+<!--NEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
+
+
+
+
+
+
+
+
+
+
+
+<!--NEEWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW-->
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- YouTube Video Section -->
+        <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+            <div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+                <div class="relative">
+                    <!-- Embedded YouTube Video -->
+                    <iframe class="w-full h-56" 
+                    src="https://www.youtube.com/embed/xL_C2iUavlc" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+            
+
+            
+
+            
+
+            
+
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">DOMAIN AND RANGE OF RATIONAL FUNCTIONS || GRADE 11 GENERAL MATHEMATICS Q1</h3>
+                    <p class="text-muted-foreground">‼️SHS MATHEMATICS PLAYLIST‼️
+                        🟣General Mathematics
+                        First Quarter: https://tinyurl.com/y5mj5dgx 
+                        Second Quarter: https://tinyurl.com/yd73z3rh
+                    </p>
+                    <div class="flex justify-between mt-2">
+                        <span class="text-muted-foreground">VIEWS: 560,130 </span>
+                        <span class="text-muted-foreground">LIKES: 7,000</span>
+                    </div>
+            
+                    <!-- Dropdown Button -->
+                    <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+                        Read More
+                    </button>
+            
+                    <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+                    <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+                        <p class="max-h-96 overflow-auto">
+                            <strong>Domain and Range of Rational Functions</strong><br><br>
+                    
+                            🎯 <strong>Overview:</strong><br>
+                            This video provides a detailed explanation on how to find the domain and range of rational functions, essential concepts in understanding the behavior of these functions.<br><br>
+                    
+                            🔹 <strong>Key Highlights:</strong><br>
+                            ✅ <strong>Determining the Domain:</strong><br>
+                            - The domain consists of all real numbers except those that make the denominator zero.<br>
+                            - To find the domain, set the denominator equal to zero and solve for \( x \); the solutions are the values to exclude from the domain.<br><br>
+                    
+                            ✅ <strong>Determining the Range:</strong><br>
+                            - The range includes all possible output values ( \( y \)-values) of the function.<br>
+                            - Analyzing the function's behavior, including horizontal asymptotes and critical points, helps in identifying the range.<br><br>
+                    
+                            🌱 <strong>Why It Matters:</strong><br>
+                            Understanding the domain and range of rational functions is crucial for accurately graphing these functions and solving real-world problems involving ratios and rates.<br><br>
+                    
+                            📺 <strong>Watch the full tutorial:</strong> <a href="https://www.youtube.com/watch?v=xL_C2iUavlc" target="_blank">Click here</a>
+                        </p>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                          
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                           
+                    
+                    
+                    
+                      
+                </div>
+            </div>
+            
+            <script>
+                function toggleDropdown(event) {
+                    const dropdown = event.target.nextElementSibling;
+            
+                    if (dropdown.classList.contains("max-h-0")) {
+                        dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+                    } else {
+                        dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+                        dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+                    }
+                }
+            </script>
+
+
+
+
+
+
+
+
+
+
+        
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2024 WEST</p>
+</footer>
+        
+</body>
+</html>

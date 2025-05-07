@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>General Mathematics - STEMediaHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Styles -->
+    <link rel="stylesheet" href="cssbranch3/kumpan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & Unlazy -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+
+      	<style>
+  	@layer base {
+    .sistem-text {
+        font-family: 'Unna', serif; /* or 'Alfa Slab One', cursive */
+    }
+    .font-alfa {
+        font-family: 'Alfa Slab One', cursive;
+    }
+    .font-unna {
+        font-family: 'Unna', serif;
+    }
+}
+  	</style>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+                        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+                        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+                        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+                        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+                        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+                        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Tailwind Custom Styles -->
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500" style="background-color: rgb(107, 114, 128) !important;">
+    <div class="bg-background text-foreground min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center bg-blue-600 text-white p-4">
+    <h1 class="text-xl font-bold">STEMediaHub</h1>
+    <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+        <span id="menuIcon" class="transition-transform duration-300">☰</span>
+    </button>
+</header>
+
+        <!-- Sidebar Menu -->
+        <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+            <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+                <h2 class="text-lg font-bold">Control Panel</h2>
+                <button id="closeButton" class="text-xl">&times;</button>
+            </div>
+            <nav class="p-4">
+                <a href="../../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+                <hr class="my-2">
+                <a href="../../genmath2.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Go Back</a>
+                
+            </nav>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center bg-[url('therese.png')] bg-cover bg-center bg-no-repeat bg-transparent p-6 rounded-lg">
+            <div class="text-center bg-white/70 p-6 rounded-lg max-w-md">
+                <h2 class="text-4xl font-extrabold">LESSON 7</h2>
+                <p class="text-lg mt-2">General</p>
+                <p class="text-lg">Mathematics</p>
+            </div>
+        </main>
+<div class="text-center my-5">
+        <h1 class="sistem-text text-black text-[70px] font-semibold">
+            Solving problems involving inverse functions
+</h1>
+        <div class="mt-6 bg-gray-500 py-2 px-6 inline-block">
+            <p class="text-white text-lg tracking-wider">YOUTUBE</p>
+        </div>
+    </div>
+
+
+
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/ZG1RurbnKpk"
+                title="Logarithmic Functions | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Logarithmic Functions | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explores logarithmic functions, their properties, how they relate to exponential functions, and their real-world applications.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 12K</span>
+            <span class="text-muted-foreground">LIKES: 187</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>📊 LOGARITHMIC FUNCTIONS 📈</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Definition of Logarithm**: A logarithm is the inverse of an exponential function. If \( b^y = x \), then \( \log_b{x} = y \).<br><br>
+
+                - **Common and Natural Logarithms**:<br>
+                  - **Common Logarithm**: \( \log{x} \) (base 10).<br>
+                  - **Natural Logarithm**: \( \ln{x} \) (base \( e \), where \( e \approx 2.718 \)).<br><br>
+
+                - **Logarithmic Properties**:<br>
+                  1️⃣ **Product Rule**: \( \log_b{(xy)} = \log_b{x} + \log_b{y} \).<br>
+                  2️⃣ **Quotient Rule**: \( \log_b{(x/y)} = \log_b{x} - \log_b{y} \).<br>
+                  3️⃣ **Power Rule**: \( \log_b{x^n} = n \log_b{x} \).<br>
+                  4️⃣ **Change of Base Formula**: \( \log_b{x} = \frac{\log_c{x}}{\log_c{b}} \).<br><br>
+
+                - **Graphical Characteristics**:<br>
+                  - The graph of \( \log_b{x} \) passes through (1,0) and increases slowly for larger \( x \).<br>
+                  - The y-axis serves as a vertical asymptote.<br>
+                  - The function is only defined for positive \( x \).<br><br>
+
+                📝 <strong>Supporting Evidence:</strong><br>
+                - Logarithms help solve exponential equations by converting them into linear equations.<br>
+                - They appear in real-world applications such as pH measurement, earthquake magnitude (Richter scale), and sound intensity (decibels).<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - How does the base of a logarithm affect the shape of its graph?<br>
+                - Why are logarithms useful for simplifying large-scale calculations?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - Rewrite the equation \( 5^x = 125 \) in logarithmic form.<br>
+                - Solve \( \log_2{16} \).<br>
+                - Apply the logarithm properties to simplify \( \log_3{27} + \log_3{9} \).<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Logarithms are essential in reversing exponential operations.<br>
+                - They simplify complex calculations and are widely used in science and engineering.<br><br>
+
+                🚀 **Keep practicing to master logarithmic functions and their applications!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/DHsBUO2N8lU"
+                title="Compound Interest | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Compound Interest | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explains the concept of compound interest, the formula used to calculate it, and how it differs from simple interest in financial applications.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: 12K</span>
+            <span class="text-muted-foreground">LIKES: 128</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>💰 UNDERSTANDING COMPOUND INTEREST 📈</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Compound Interest**: Interest calculated on the initial principal and also on the accumulated interest from previous periods.<br><br>
+
+                - **Formula for Compound Interest**:<br>
+                  \[
+                  A = P(1 + \frac{r}{n})^{nt}
+                  \]
+                  where:<br>
+                  - \( A \) = Final amount<br>
+                  - \( P \) = Principal (initial investment)<br>
+                  - \( r \) = Annual interest rate (decimal form)<br>
+                  - \( n \) = Number of times interest is compounded per year<br>
+                  - \( t \) = Time in years<br><br>
+
+                - **Comparison with Simple Interest**:<br>
+                  - **Simple Interest**: Interest is only calculated on the principal: \( SI = P \times r \times t \).<br>
+                  - **Compound Interest**: Interest is earned on both the principal and previously accumulated interest, leading to exponential growth.<br><br>
+
+                - **Effect of Compounding Frequency**:<br>
+                  - The more frequently interest is compounded, the greater the final amount.<br>
+                  - Common compounding periods: annually, semiannually, quarterly, monthly, and daily.<br><br>
+
+                📝 <strong>Supporting Evidence:</strong><br>
+                - **Financial Growth**: Investments using compound interest grow faster than those using simple interest.<br>
+                - **Applications**: Used in savings accounts, loans, investments, and retirement plans.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - How does the compounding period affect the total interest earned?<br>
+                - Why do banks and financial institutions prefer compound interest over simple interest?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - If you invest $1,000 at an annual interest rate of 5% compounded quarterly, how much will you have after 5 years?<br>
+                - Compare the final amount of an investment using simple vs. compound interest over 10 years.<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - Compound interest allows money to grow exponentially over time.<br>
+                - The frequency of compounding significantly impacts the final amount.<br><br>
+
+                🚀 **Start applying compound interest to maximize savings and investments!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+<!-- YouTube Video Section -->
+<div class="max-w-md mx-auto bg-card rounded-lg shadow-md overflow-hidden my-5">
+    <div class="relative">
+        <!-- Embedded YouTube Video -->
+        <iframe class="w-full h-56"
+                src="https://www.youtube.com/embed/spEcHHAZxoI"
+                title="Present Value & Future Value of Money | General Mathematics"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="p-4">
+        <h3 class="text-lg font-semibold">Present Value & Future Value of Money | General Mathematics</h3>
+        <p class="text-muted-foreground">
+            This video explores the concepts of present value (PV) and future value (FV), explaining how time affects the worth of money and its applications in finance.
+        </p>
+        <div class="flex justify-between mt-2">
+            <span class="text-muted-foreground">VIEWS: Data not available</span>
+            <span class="text-muted-foreground">LIKES: Data not available</span>
+        </div>
+
+        <!-- Dropdown Button -->
+        <button onclick="toggleDropdown(event)" class="mt-4 block w-full bg-secondary text-secondary-foreground text-center py-3 rounded-lg hover:bg-secondary/80">
+            Key Points & Module
+        </button>
+
+        <!-- Dropdown Content (Smooth Animation & Scrollable) -->
+        <div class="dropdown-menu max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-white shadow-lg rounded-lg p-4 mt-2">
+            <p class="max-h-96 overflow-auto">
+                <strong>💰 UNDERSTANDING PRESENT VALUE & FUTURE VALUE 📈</strong><br><br>
+
+                🎯 <strong>Key Concepts:</strong><br>
+                - **Future Value (FV)**: The value of an investment after earning interest over a specific period.<br>
+                - **Present Value (PV)**: The current worth of a future sum of money, discounted at a given interest rate.<br><br>
+
+                - **Formula for Future Value**:<br>
+                  \[
+                  FV = P(1 + r)^t
+                  \]
+                  where:<br>
+                  - \( FV \) = Future value<br>
+                  - \( P \) = Principal amount<br>
+                  - \( r \) = Interest rate (decimal form)<br>
+                  - \( t \) = Time in years<br><br>
+
+                - **Formula for Present Value**:<br>
+                  \[
+                  PV = \frac{FV}{(1 + r)^t}
+                  \]
+                  where:<br>
+                  - \( PV \) = Present value<br>
+                  - \( FV \) = Future value<br>
+                  - \( r \) = Interest rate (decimal form)<br>
+                  - \( t \) = Time in years<br><br>
+
+                - **Time Value of Money**:<br>
+                  - Money today is worth more than the same amount in the future due to potential earning capacity.<br>
+                  - Interest rates and inflation affect the value of money over time.<br><br>
+
+                📝 <strong>Supporting Evidence:</strong><br>
+                - **Investments**: Understanding PV and FV helps in making better investment decisions.<br>
+                - **Loan Payments**: Used to determine how much needs to be saved today for a future financial goal.<br><br>
+
+                ✅ <strong>Key Discussion Points:</strong><br>
+                - Why does money lose value over time?<br>
+                - How do different interest rates impact PV and FV calculations?<br><br>
+
+                🧠 <strong>Quiz & Reflection:</strong><br>
+                - If you invest $5,000 at an annual interest rate of 6% for 5 years, what will be its future value?<br>
+                - If you need $10,000 in 8 years and the interest rate is 4% per year, how much should you invest today?<br><br>
+
+                🌟 <strong>Key Takeaways:</strong><br>
+                - The **future value** of money grows due to interest over time.<br>
+                - The **present value** helps determine how much money is needed today to reach a financial goal in the future.<br><br>
+
+                🚀 **Use these concepts to make informed financial decisions and grow your wealth wisely!**
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown(event) {
+        const dropdown = event.target.nextElementSibling;
+
+        if (dropdown.classList.contains("max-h-0")) {
+            dropdown.classList.remove("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.add("max-h-96", "opacity-100", "overflow-auto");
+        } else {
+            dropdown.classList.add("max-h-0", "opacity-0", "overflow-hidden");
+            dropdown.classList.remove("max-h-96", "opacity-100", "overflow-auto");
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Sidebar Toggle Script -->
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const sidebarMenu = document.getElementById("sidebarMenu");
+
+    menuButton.addEventListener("click", () => {
+        sidebarMenu.classList.toggle("-translate-x-full");
+        menuIcon.classList.toggle("rotate-180"); // Spins only the ☰ icon
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        sidebarMenu.classList.add("-translate-x-full");
+        menuIcon.classList.remove("rotate-180"); // Spins back when closed
+    });
+</script>
+        
+        <!-- Footer -->
+<footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+    <p class="text-center text-muted-foreground">© 2025 Dolores National High School</p>
+</footer>
+        
+</body>
+</html>
